@@ -1,6 +1,6 @@
 # myHipRehab
 
-A digital health project.
+myHipRehab is a mobile application that provides a user with 7 exercises with the associated sets, reps, resistance, tempo, and rest time that is required post-hip surgery. This app was developed by Grace Tholl, Annalina Becker, Rithika Bikkavilli, and Caroline Kraus with guidance from Ben Gordon from the department of Applied Physiology and Kinesiology for Dr. Sumi Helal's Digital Health course at the University of Florida.
 
 ## References
 
