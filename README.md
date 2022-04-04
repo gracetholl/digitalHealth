@@ -2,15 +2,16 @@
 
 A digital health project.
 
-## Getting Started
+## References
 
-This project is a starting point for a Flutter application.
+https://stackoverflow.com/questions/51556356/how-to-display-animated-gif-in-flutter
 
-A few resources to get you started if this is your first Flutter project:
+https://stackoverflow.com/questions/50903106/how-to-add-image-in-flutter
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+https://stackoverflow.com/questions/64762755/how-to-redirect-to-the-next-page-after-successful-authentication-in-flutter
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+https://proandroiddev.com/flutter-creating-multi-page-application-with-navigation-ef9f4a72d181
+
+https://www.tutorialkart.com/flutter/flutter-login-screen/
+
+https://www.tutorialkart.com/flutter/flutter-change-font-size-of-text-widget/
