@@ -17,7 +17,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: _title,
       home: Scaffold(
         appBar: AppBar(title: const Text(_title), centerTitle:true),
         body: const MyStatefulWidget(),
@@ -111,7 +110,8 @@ class HomePage extends StatelessWidget {
             backgroundColor: Colors.white,
             primarySwatch: Colors.red),
         home: Scaffold(
-            appBar: AppBar(title: const Text(""), centerTitle: true),
+            appBar: AppBar(centerTitle: true, title: Image.asset('assets/images/whitelogo.png', width: 150, height: 300)),
+
             body: Builder(
               builder: (context) =>
               ListView(
@@ -120,29 +120,331 @@ class HomePage extends StatelessWidget {
                     padding: const EdgeInsets.all(10),
                     color: Theme.of(context).backgroundColor,
                     child: const Text(
-                      'Post Hip Surgery Exercises',
-                    style: TextStyle(fontSize:30, fontWeight: FontWeight.bold, color: Colors.red)),
+                      'Welcome!',
+                        textAlign: TextAlign.center,
+                    style: TextStyle(fontSize:50, fontFamily: 'PlayfairDisplay', color: Colors.red)),
                   ),
                 Container(
-                  padding:const EdgeInsets.all(10),
+                  padding:const EdgeInsets.only(top:490),
                 ),
-                Container(
-                  padding: const EdgeInsets.all(15),
-                  child: const Text(
-                      '1. Hip Extensions',
-                      style: TextStyle(fontSize:20, fontWeight: FontWeight.normal)),
-                ),
-              Container(
-                padding: const EdgeInsets.all(40),
-              ),
-              Image.asset('assets/images/hipextension.gif', height:300, width: 100),
 
-           ])
+            FractionallySizedBox(
+              widthFactor: 0.5,
+              child: ElevatedButton(
 
-        )));
+                    child: const Text('Get Started', style: const TextStyle(fontSize: 15)),
+                    onPressed: () {
+                      Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise1()));
+                    },
+                  )
+            )],
+        ),),));
   }
 
 }
 
+class Exercise1 extends StatelessWidget {
 
 
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        theme: ThemeData(
+            backgroundColor: Colors.white,
+            primarySwatch: Colors.red),
+        home: Scaffold(
+            appBar: AppBar(leading:IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: (){
+                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new HomePage()));
+                }),
+                centerTitle: true, title: Image.asset('assets/images/whitelogo.png', width: 150, height: 300)),
+            body: Builder(
+    builder: (context) =>
+    ListView(
+    children: <Widget>[
+      Text("Exercise 1"),
+      Container(
+        padding: const EdgeInsets.only(top:560),
+      ),
+      FractionallySizedBox(
+          widthFactor: 0.5,
+
+          child: ElevatedButton(
+
+            child: const Text('Next Exercise', style: const TextStyle(fontSize: 15)),
+            onPressed: () {
+              Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise2()));
+            },
+          )
+      )
+
+    ],
+
+        ))));
+  }
+}
+
+class Exercise2 extends StatelessWidget {
+
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        theme: ThemeData(
+            backgroundColor: Colors.white,
+            primarySwatch: Colors.red),
+        home: Scaffold(
+            appBar: AppBar(leading:IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: (){
+                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise1()));
+                }),
+    centerTitle: true, title: Image.asset('assets/images/whitelogo.png', width: 150, height: 300)),
+
+    body: Builder(
+    builder: (context) =>
+    ListView(
+    children: <Widget>[
+      Text("Exercise 2"),
+      Container(
+        padding: const EdgeInsets.only(top:560),
+      ),
+      FractionallySizedBox(
+          widthFactor: 0.5,
+          child: ElevatedButton(
+
+            child: const Text('Next Exercise', style: const TextStyle(fontSize: 15)),
+            onPressed: () {
+              Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise3()));
+            },
+          )
+      )],
+
+    ))));
+  }
+}
+
+class Exercise3 extends StatelessWidget {
+
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        theme: ThemeData(
+            backgroundColor: Colors.white,
+            primarySwatch: Colors.red),
+        home: Scaffold(
+            appBar: AppBar(leading:IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: (){
+                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise2()));
+                }),
+                centerTitle: true, title: Image.asset('assets/images/whitelogo.png', width: 150, height: 300)),
+
+            body: Builder(
+                builder: (context) =>
+                    ListView(
+                      children: <Widget>[
+                        Text("Exercise 3"),
+                        Container(
+                          padding: const EdgeInsets.only(top:560),
+                        ),
+                        FractionallySizedBox(
+                            widthFactor: 0.5,
+                            child: ElevatedButton(
+
+                              child: const Text('Next Exercise', style: const TextStyle(fontSize: 15)),
+                              onPressed: () {
+                                Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise4()));
+                              },
+                            )
+                        )],
+
+                    ))));
+  }
+}
+
+
+class Exercise4 extends StatelessWidget {
+
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        theme: ThemeData(
+            backgroundColor: Colors.white,
+            primarySwatch: Colors.red),
+        home: Scaffold(
+            appBar: AppBar(leading:IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: (){
+                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise3()));
+                }),
+                centerTitle: true, title: Image.asset('assets/images/whitelogo.png', width: 150, height: 300)),
+            body: Builder(
+                builder: (context) =>
+                    ListView(
+                      children: <Widget>[
+                        Text("Exercise 4"),
+                        Container(
+                          padding: const EdgeInsets.only(top:560),
+                        ),
+                        FractionallySizedBox(
+                            widthFactor: 0.5,
+                            child: ElevatedButton(
+
+                              child: const Text('Next Exercise', style: const TextStyle(fontSize: 15)),
+                              onPressed: () {
+                                Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise5()));
+                              },
+                            )
+                        )],
+
+                    ))));
+  }
+}
+
+class Exercise5 extends StatelessWidget {
+
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        theme: ThemeData(
+            backgroundColor: Colors.white,
+            primarySwatch: Colors.red),
+        home: Scaffold(
+            appBar: AppBar(leading:IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: (){
+                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise4()));
+                }),
+                centerTitle: true, title: Image.asset('assets/images/whitelogo.png', width: 150, height: 300)),
+            body: Builder(
+                builder: (context) =>
+                    ListView(
+                      children: <Widget>[
+                        Text("Exercise 5"),
+                        Container(
+                          padding: const EdgeInsets.only(top:560),
+                        ),
+                        FractionallySizedBox(
+                            widthFactor: 0.5,
+                            child: ElevatedButton(
+
+                              child: const Text('Next Exercise', style: const TextStyle(fontSize: 15)),
+                              onPressed: () {
+                                Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise6()));
+                              },
+                            )
+                        )],
+
+                    ))));
+  }
+}
+
+class Exercise6 extends StatelessWidget {
+
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        theme: ThemeData(
+            backgroundColor: Colors.white,
+            primarySwatch: Colors.red),
+        home: Scaffold(
+            appBar: AppBar(leading:IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: (){
+                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise5()));
+                }),
+                centerTitle: true, title: Image.asset('assets/images/whitelogo.png', width: 150, height: 300)),
+            body: Builder(
+                builder: (context) =>
+                    ListView(
+                      children: <Widget>[
+                        Text("Exercise 6"),
+                        Container(
+                          padding: const EdgeInsets.only(top:560),
+                        ),
+                        FractionallySizedBox(
+                            widthFactor: 0.5,
+                            child: ElevatedButton(
+
+                              child: const Text('Next Exercise', style: const TextStyle(fontSize: 15)),
+                              onPressed: () {
+                                Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise7()));
+                              },
+                            )
+                        )],
+
+                    ))));
+  }
+}
+
+class Exercise7 extends StatelessWidget {
+
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        theme: ThemeData(
+            backgroundColor: Colors.white,
+            primarySwatch: Colors.red),
+        home: Scaffold(
+            appBar: AppBar(leading:IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: (){
+                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise6()));
+                }),
+                centerTitle: true, title: Image.asset('assets/images/whitelogo.png', width: 150, height: 300)),
+            body: Builder(
+                builder: (context) =>
+                    ListView(
+                      children: <Widget>[
+                        Text("Exercise 7"),
+                        Container(
+                          padding: const EdgeInsets.only(top:560),
+                        ),
+                        FractionallySizedBox(
+                            widthFactor: 0.5,
+                            child: ElevatedButton(
+
+                              child: const Text('Finish', style: const TextStyle(fontSize: 15)),
+                              onPressed: () {
+                                Navigator.push(context, new MaterialPageRoute(builder: (context) => new Finish()));
+                              },
+                            )
+                        )],
+
+                    ))));
+  }
+}
+
+class Finish extends StatelessWidget {
+
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        theme: ThemeData(
+            backgroundColor: Colors.white,
+            primarySwatch: Colors.red),
+        home: Scaffold(
+            appBar: AppBar( leading:IconButton(
+                icon: Icon(Icons.home),
+                onPressed: (){
+                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new HomePage()));
+                }),
+                centerTitle: true, title: Image.asset('assets/images/whitelogo.png', width: 150, height: 300)),
+            body: Builder(
+                builder: (context) =>
+                    ListView(
+                      children: <Widget>[
+                        Text("Congrats page or something?", style: TextStyle(fontSize:30))
+                       ],
+
+                    ))));
+  }
+}
