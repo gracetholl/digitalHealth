@@ -19,3 +19,5 @@ https://www.tutorialkart.com/flutter/flutter-change-font-size-of-text-widget/
 https://www.javatpoint.com/flutter-buttons
 
 https://www.codegrepper.com/code-examples/dart/set+width+to+elevatedbutton+flutter
+
+https://fonts.google.com/
