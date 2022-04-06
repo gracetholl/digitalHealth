@@ -177,7 +177,14 @@ class Exercise1 extends StatelessWidget {
               Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise2()));
             },
           )
-      )
+      ),
+
+      Container(
+          padding: const EdgeInsets.all(16.0),
+          child: const LinearProgressIndicator(
+            value: 0,
+          ),
+      ),
 
     ],
 
@@ -219,7 +226,14 @@ class Exercise2 extends StatelessWidget {
               Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise3()));
             },
           )
-      )],
+      ),
+      Container(
+        padding: const EdgeInsets.all(16.0),
+        child: const LinearProgressIndicator(
+          value: 0.14,
+        ),
+      ),
+    ],
 
     ))));
   }
@@ -259,7 +273,15 @@ class Exercise3 extends StatelessWidget {
                                 Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise4()));
                               },
                             )
-                        )],
+                        ),
+
+                        Container(
+                          padding: const EdgeInsets.all(16.0),
+                          child: const LinearProgressIndicator(
+                            value: 0.28,
+                          ),
+                        ),
+                      ],
 
                     ))));
   }
@@ -299,7 +321,15 @@ class Exercise4 extends StatelessWidget {
                                 Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise5()));
                               },
                             )
-                        )],
+                        ),
+
+                        Container(
+                          padding: const EdgeInsets.all(16.0),
+                          child: const LinearProgressIndicator(
+                            value: 0.42,
+                          ),
+                        ),
+                      ],
 
                     ))));
   }
@@ -338,7 +368,15 @@ class Exercise5 extends StatelessWidget {
                                 Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise6()));
                               },
                             )
-                        )],
+                        ),
+
+                        Container(
+                          padding: const EdgeInsets.all(16.0),
+                          child: const LinearProgressIndicator(
+                            value: 0.56,
+                          ),
+                        ),
+                      ],
 
                     ))));
   }
@@ -377,7 +415,15 @@ class Exercise6 extends StatelessWidget {
                                 Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise7()));
                               },
                             )
-                        )],
+                        ),
+
+                        Container(
+                          padding: const EdgeInsets.all(16.0),
+                          child: const LinearProgressIndicator(
+                            value: 0.70,
+                          ),
+                        ),
+                      ],
 
                     ))));
   }
@@ -416,7 +462,15 @@ class Exercise7 extends StatelessWidget {
                                 Navigator.push(context, new MaterialPageRoute(builder: (context) => new Finish()));
                               },
                             )
-                        )],
+                        ),
+
+                        Container(
+                          padding: const EdgeInsets.all(16.0),
+                          child: const LinearProgressIndicator(
+                            value: 0.84,
+                          ),
+                        ),
+                      ],
 
                     ))));
   }
@@ -442,7 +496,29 @@ class Finish extends StatelessWidget {
                 builder: (context) =>
                     ListView(
                       children: <Widget>[
-                        Text("Congrats page or something?", style: TextStyle(fontSize:30))
+                        Text("Congrats page or something?", style: TextStyle(fontSize:15)),
+
+                        Container(
+                          padding: const EdgeInsets.only(top:560),
+                        ),
+
+                        FractionallySizedBox(
+                            widthFactor: 0.5,
+                            child: ElevatedButton(
+
+                              child: const Text('Back to Home Page', style: const TextStyle(fontSize: 15)),
+                              onPressed: () {
+                                Navigator.push(context, new MaterialPageRoute(builder: (context) => new HomePage()));
+                              },
+                            )
+                        ),
+
+                        Container(
+                          padding: const EdgeInsets.all(16.0),
+                          child: const LinearProgressIndicator(
+                            value: 1,
+                          ),
+                        ),
                        ],
 
                     ))));
