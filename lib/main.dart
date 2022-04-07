@@ -124,12 +124,22 @@ class HomePage extends StatelessWidget {
                         textAlign: TextAlign.center,
                     style: TextStyle(fontSize:50, fontFamily: 'PlayfairDisplay', color: Colors.red)),
                   ),
-                Container(
-                  padding:const EdgeInsets.only(top:490),
-                ),
+              Container(
+                child: const Text(
+                    '\nNotes to remember:',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize:30, fontFamily: 'PlayfairDisplay', color: Colors.black54)),
+              ),
+              Container(
+                padding: const EdgeInsets.all(10.0),
+                child: const Text(
+                    '\n1. Exercises should be performed 3x a week at a similar time of day.\n2. Be sure to repeat exercises bilaterally (both legs, both arms, etc.).\n3. Choose resistance based on maximum level that is comfortable.',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize:27, fontFamily: 'PlayfairDisplay', color: Colors.black38)),
+              ),
 
             FractionallySizedBox(
-              widthFactor: 0.5,
+              widthFactor: 0.50,
               child: ElevatedButton(
 
                     child: const Text('Get Started', style: const TextStyle(fontSize: 15)),
@@ -143,8 +153,8 @@ class HomePage extends StatelessWidget {
 
 }
 
+// Hip Extension
 class Exercise1 extends StatelessWidget {
-
 
   @override
   Widget build(BuildContext context) {
@@ -163,15 +173,31 @@ class Exercise1 extends StatelessWidget {
     builder: (context) =>
     ListView(
     children: <Widget>[
-      Text("Exercise 1"),
       Container(
-        padding: const EdgeInsets.only(top:560),
+        child: const Text(
+            '\nExercise 1: Hip Extensions',
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize:30, fontFamily: 'PlayfairDisplay', color: Colors.red)),
       ),
+      Image.asset("assets/images/hipextension.gif", width:100, height:400),
+      Container(
+        child: const Text(
+            'Directions: 2 sets x 12 reps with 30s rest',
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize:22, fontFamily: 'PlayfairDisplay', color: Colors.black)),
+      ),
+      Container(
+        child: const Text(
+            'Use Theraband for resistance',
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize:22, fontFamily: 'PlayfairDisplay', color: Colors.black54)),
+      ),
+      /*Container(
+        padding: const EdgeInsets.only(top:100),
+      ),*/
       FractionallySizedBox(
-          widthFactor: 0.5,
-
+          widthFactor: 0.50,
           child: ElevatedButton(
-
             child: const Text('Next Exercise', style: const TextStyle(fontSize: 15)),
             onPressed: () {
               Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise2()));
@@ -193,8 +219,6 @@ class Exercise1 extends StatelessWidget {
 }
 
 class Exercise2 extends StatelessWidget {
-
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -211,22 +235,36 @@ class Exercise2 extends StatelessWidget {
 
     body: Builder(
     builder: (context) =>
-    ListView(
-    children: <Widget>[
-      Text("Exercise 2"),
-      Container(
-        padding: const EdgeInsets.only(top:560),
-      ),
-      FractionallySizedBox(
-          widthFactor: 0.5,
-          child: ElevatedButton(
-
-            child: const Text('Next Exercise', style: const TextStyle(fontSize: 15)),
-            onPressed: () {
-              Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise3()));
-            },
-          )
-      ),
+        ListView(
+          children: <Widget>[
+            Container(
+              child: const Text(
+                  '\nExercise 2: Tricep Extensions',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize:30, fontFamily: 'PlayfairDisplay', color: Colors.red)),
+            ),
+            Image.asset("assets/images/hipextension.gif", width:100, height:400),
+            Container(
+              child: const Text(
+                  'Directions: 2 sets x 8 reps with 30s rest',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize:22, fontFamily: 'PlayfairDisplay', color: Colors.black)),
+            ),
+            Container(
+              child: const Text(
+                  'Use Theraband for resistance',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize:22, fontFamily: 'PlayfairDisplay', color: Colors.black54)),
+            ),
+            FractionallySizedBox(
+                widthFactor: 0.50,
+                child: ElevatedButton(
+                  child: const Text('Next Exercise', style: const TextStyle(fontSize: 15)),
+                  onPressed: () {
+                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise3()));
+                  },
+                )
+            ),
       Container(
         padding: const EdgeInsets.all(16.0),
         child: const LinearProgressIndicator(
@@ -240,8 +278,6 @@ class Exercise2 extends StatelessWidget {
 }
 
 class Exercise3 extends StatelessWidget {
-
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -260,14 +296,28 @@ class Exercise3 extends StatelessWidget {
                 builder: (context) =>
                     ListView(
                       children: <Widget>[
-                        Text("Exercise 3"),
                         Container(
-                          padding: const EdgeInsets.only(top:560),
+                          child: const Text(
+                              '\nExercise 3: Chair Squats',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize:30, fontFamily: 'PlayfairDisplay', color: Colors.red)),
+                        ),
+                        Image.asset("assets/images/hipextension.gif", width:100, height:400),
+                        Container(
+                          child: const Text(
+                              'Directions: 2 sets x 8 reps with 30s rest',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize:22, fontFamily: 'PlayfairDisplay', color: Colors.black)),
+                        ),
+                        Container(
+                          child: const Text(
+                              'Use weighted vest for resistance',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize:22, fontFamily: 'PlayfairDisplay', color: Colors.black54)),
                         ),
                         FractionallySizedBox(
-                            widthFactor: 0.5,
+                            widthFactor: 0.50,
                             child: ElevatedButton(
-
                               child: const Text('Next Exercise', style: const TextStyle(fontSize: 15)),
                               onPressed: () {
                                 Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise4()));
@@ -289,8 +339,6 @@ class Exercise3 extends StatelessWidget {
 
 
 class Exercise4 extends StatelessWidget {
-
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -308,14 +356,28 @@ class Exercise4 extends StatelessWidget {
                 builder: (context) =>
                     ListView(
                       children: <Widget>[
-                        Text("Exercise 4"),
                         Container(
-                          padding: const EdgeInsets.only(top:560),
+                          child: const Text(
+                              '\nExercise 4: Double Arm Lift',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize:30, fontFamily: 'PlayfairDisplay', color: Colors.red)),
+                        ),
+                        Image.asset("assets/images/hipextension.gif", width:100, height:400),
+                        Container(
+                          child: const Text(
+                              'Directions: 2 sets x 8 reps with 30s rest',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize:22, fontFamily: 'PlayfairDisplay', color: Colors.black)),
+                        ),
+                        Container(
+                          child: const Text(
+                              'Use Theraband for resistance',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize:22, fontFamily: 'PlayfairDisplay', color: Colors.black54)),
                         ),
                         FractionallySizedBox(
-                            widthFactor: 0.5,
+                            widthFactor: 0.50,
                             child: ElevatedButton(
-
                               child: const Text('Next Exercise', style: const TextStyle(fontSize: 15)),
                               onPressed: () {
                                 Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise5()));
@@ -355,14 +417,28 @@ class Exercise5 extends StatelessWidget {
                 builder: (context) =>
                     ListView(
                       children: <Widget>[
-                        Text("Exercise 5"),
                         Container(
-                          padding: const EdgeInsets.only(top:560),
+                          child: const Text(
+                              '\nExercise 5: Step Up and Down',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize:30, fontFamily: 'PlayfairDisplay', color: Colors.red)),
+                        ),
+                        Image.asset("assets/images/hipextension.gif", width:100, height:400),
+                        Container(
+                          child: const Text(
+                              'Directions: 2 sets x 8 reps with 30s rest',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize:22, fontFamily: 'PlayfairDisplay', color: Colors.black)),
+                        ),
+                        Container(
+                          child: const Text(
+                              'Use weighted vest for resistance',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize:22, fontFamily: 'PlayfairDisplay', color: Colors.black54)),
                         ),
                         FractionallySizedBox(
-                            widthFactor: 0.5,
+                            widthFactor: 0.50,
                             child: ElevatedButton(
-
                               child: const Text('Next Exercise', style: const TextStyle(fontSize: 15)),
                               onPressed: () {
                                 Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise6()));
@@ -402,21 +478,34 @@ class Exercise6 extends StatelessWidget {
                 builder: (context) =>
                     ListView(
                       children: <Widget>[
-                        Text("Exercise 6"),
                         Container(
-                          padding: const EdgeInsets.only(top:560),
+                          child: const Text(
+                              '\nExercise 6: Diagonal Reach',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize:30, fontFamily: 'PlayfairDisplay', color: Colors.red)),
+                        ),
+                        Image.asset("assets/images/hipextension.gif", width:100, height:400),
+                        Container(
+                          child: const Text(
+                              'Directions: 2 sets x 8 reps with 30s rest',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize:22, fontFamily: 'PlayfairDisplay', color: Colors.black)),
+                        ),
+                        Container(
+                          child: const Text(
+                              'Use Theraband for resistance',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize:22, fontFamily: 'PlayfairDisplay', color: Colors.black54)),
                         ),
                         FractionallySizedBox(
-                            widthFactor: 0.5,
+                            widthFactor: 0.50,
                             child: ElevatedButton(
-
                               child: const Text('Next Exercise', style: const TextStyle(fontSize: 15)),
                               onPressed: () {
                                 Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise7()));
                               },
                             )
                         ),
-
                         Container(
                           padding: const EdgeInsets.all(16.0),
                           child: const LinearProgressIndicator(
@@ -449,21 +538,34 @@ class Exercise7 extends StatelessWidget {
                 builder: (context) =>
                     ListView(
                       children: <Widget>[
-                        Text("Exercise 7"),
                         Container(
-                          padding: const EdgeInsets.only(top:560),
+                          child: const Text(
+                              '\nExercise 7: Calf Raises',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize:30, fontFamily: 'PlayfairDisplay', color: Colors.red)),
+                        ),
+                        Image.asset("assets/images/hipextension.gif", width:100, height:400),
+                        Container(
+                          child: const Text(
+                              'Directions: 2 sets x 12 reps with 30s rest',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize:22, fontFamily: 'PlayfairDisplay', color: Colors.black)),
+                        ),
+                        Container(
+                          child: const Text(
+                              'Use weighted vest for resistance',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize:22, fontFamily: 'PlayfairDisplay', color: Colors.black54)),
                         ),
                         FractionallySizedBox(
-                            widthFactor: 0.5,
+                            widthFactor: 0.50,
                             child: ElevatedButton(
-
-                              child: const Text('Finish', style: const TextStyle(fontSize: 15)),
+                              child: const Text('Next Exercise', style: const TextStyle(fontSize: 15)),
                               onPressed: () {
                                 Navigator.push(context, new MaterialPageRoute(builder: (context) => new Finish()));
                               },
                             )
                         ),
-
                         Container(
                           padding: const EdgeInsets.all(16.0),
                           child: const LinearProgressIndicator(
@@ -496,8 +598,7 @@ class Finish extends StatelessWidget {
                 builder: (context) =>
                     ListView(
                       children: <Widget>[
-                        Text("Congrats page or something?", style: TextStyle(fontSize:15)),
-
+                        Text("Congratulations! Workout complete", style: TextStyle(fontSize:30)),
                         Container(
                           padding: const EdgeInsets.only(top:560),
                         ),
