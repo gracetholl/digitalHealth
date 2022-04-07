@@ -609,13 +609,13 @@ class Finish extends StatelessWidget {
                         ),
                         Container(
                           child: const Text(
-                              '\nEach week after treatment, add one repetition.\nWhen 8 weeks have passed after treatment, drop reps to the original count and add a set.'
+                              '\nEach week after treatment, add one repetition.\nWhen 8 weeks have passed after treatment, drop reps to the original count and add a set.',
                               textAlign: TextAlign.center,
                               style: TextStyle(fontSize:20, fontFamily: 'PlayfairDisplay', color: Colors.black54)),
                         ),
                         Container(
                           child: const Text(
-                              '\nProgram adapted from Lee 2020 - Postoperative Rehabilitation after Hip Fracture and Latham 2014 - Effect of a home-based exercise program on functional recovery following rehabilitation after hip fracture'
+                              '\nProgram adapted from Lee 2020 - Postoperative Rehabilitation after Hip Fracture and Latham 2014 - Effect of a home-based exercise program on functional recovery following rehabilitation after hip fracture',
                               textAlign: TextAlign.center,
                               style: TextStyle(fontSize:15, fontFamily: 'PlayfairDisplay', color: Colors.black)),
                         ),
