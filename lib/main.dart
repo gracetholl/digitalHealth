@@ -598,9 +598,9 @@ class Finish extends StatelessWidget {
                 builder: (context) =>
                     ListView(
                       children: <Widget>[
-                        Container(
+                        /*Container(
                           padding: const EdgeInsets.only(top:50),
-                        ),
+                        ),*/
                         Container(
                           child: const Text(
                               '\nCongratulations!\nWorkout complete',
@@ -608,12 +608,14 @@ class Finish extends StatelessWidget {
                               style: TextStyle(fontSize:35, fontFamily: 'PlayfairDisplay', color: Colors.red)),
                         ),
                         Container(
+                          padding: const EdgeInsets.all(16.0),
                           child: const Text(
                               '\nEach week after treatment, add one repetition.\nWhen 8 weeks have passed after treatment, drop reps to the original count and add a set.',
                               textAlign: TextAlign.center,
                               style: TextStyle(fontSize:20, fontFamily: 'PlayfairDisplay', color: Colors.black54)),
                         ),
                         Container(
+                          padding: const EdgeInsets.all(16.0),
                           child: const Text(
                               '\nProgram adapted from Lee 2020 - Postoperative Rehabilitation after Hip Fracture and Latham 2014 - Effect of a home-based exercise program on functional recovery following rehabilitation after hip fracture',
                               textAlign: TextAlign.center,
