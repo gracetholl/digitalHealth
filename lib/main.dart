@@ -135,7 +135,7 @@ class HomePage extends StatelessWidget {
                 child: const Text(
                     '\n1. Exercises should be performed 3x a week at a similar time of day.\n2. Be sure to repeat exercises bilaterally (both legs, both arms, etc.).\n3. Choose resistance based on maximum level that is comfortable.',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize:27, fontFamily: 'PlayfairDisplay', color: Colors.black38)),
+                    style: TextStyle(fontSize:23, fontFamily: 'PlayfairDisplay', color: Colors.black38)),
               ),
 
             FractionallySizedBox(
@@ -179,7 +179,7 @@ class Exercise1 extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(fontSize:30, fontFamily: 'PlayfairDisplay', color: Colors.red)),
       ),
-      Image.asset("assets/images/hipextension.gif", width:100, height:400),
+      Image.asset("assets/images/hipextension.gif", width:80, height:350),
       Container(
         child: const Text(
             'Directions: 2 sets x 12 reps with 30s rest',
@@ -243,7 +243,7 @@ class Exercise2 extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize:30, fontFamily: 'PlayfairDisplay', color: Colors.red)),
             ),
-            Image.asset("assets/images/hipextension.gif", width:100, height:400),
+            Image.asset("assets/images/hipextension.gif", width:80, height:350),
             Container(
               child: const Text(
                   'Directions: 2 sets x 8 reps with 30s rest',
@@ -302,7 +302,7 @@ class Exercise3 extends StatelessWidget {
                               textAlign: TextAlign.center,
                               style: TextStyle(fontSize:30, fontFamily: 'PlayfairDisplay', color: Colors.red)),
                         ),
-                        Image.asset("assets/images/hipextension.gif", width:100, height:400),
+                        Image.asset("assets/images/hipextension.gif", width:80, height:350),
                         Container(
                           child: const Text(
                               'Directions: 2 sets x 8 reps with 30s rest',
@@ -362,7 +362,7 @@ class Exercise4 extends StatelessWidget {
                               textAlign: TextAlign.center,
                               style: TextStyle(fontSize:30, fontFamily: 'PlayfairDisplay', color: Colors.red)),
                         ),
-                        Image.asset("assets/images/hipextension.gif", width:100, height:400),
+                        Image.asset("assets/images/hipextension.gif", width:80, height:350),
                         Container(
                           child: const Text(
                               'Directions: 2 sets x 8 reps with 30s rest',
@@ -423,7 +423,7 @@ class Exercise5 extends StatelessWidget {
                               textAlign: TextAlign.center,
                               style: TextStyle(fontSize:30, fontFamily: 'PlayfairDisplay', color: Colors.red)),
                         ),
-                        Image.asset("assets/images/hipextension.gif", width:100, height:400),
+                        Image.asset("assets/images/hipextension.gif", width:80, height:350),
                         Container(
                           child: const Text(
                               'Directions: 2 sets x 8 reps with 30s rest',
@@ -484,7 +484,7 @@ class Exercise6 extends StatelessWidget {
                               textAlign: TextAlign.center,
                               style: TextStyle(fontSize:30, fontFamily: 'PlayfairDisplay', color: Colors.red)),
                         ),
-                        Image.asset("assets/images/hipextension.gif", width:100, height:400),
+                        Image.asset("assets/images/hipextension.gif", width:80, height:350),
                         Container(
                           child: const Text(
                               'Directions: 2 sets x 8 reps with 30s rest',
@@ -544,7 +544,7 @@ class Exercise7 extends StatelessWidget {
                               textAlign: TextAlign.center,
                               style: TextStyle(fontSize:30, fontFamily: 'PlayfairDisplay', color: Colors.red)),
                         ),
-                        Image.asset("assets/images/hipextension.gif", width:100, height:400),
+                        Image.asset("assets/images/hipextension.gif", width:80, height:350),
                         Container(
                           child: const Text(
                               'Directions: 2 sets x 12 reps with 30s rest',
@@ -598,11 +598,30 @@ class Finish extends StatelessWidget {
                 builder: (context) =>
                     ListView(
                       children: <Widget>[
-                        Text("Congratulations! Workout complete", style: TextStyle(fontSize:30)),
                         Container(
-                          padding: const EdgeInsets.only(top:560),
+                          padding: const EdgeInsets.only(top:50),
                         ),
-
+                        Container(
+                          child: const Text(
+                              '\nCongratulations!\nWorkout complete',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize:35, fontFamily: 'PlayfairDisplay', color: Colors.red)),
+                        ),
+                        Container(
+                          child: const Text(
+                              '\nEach week after treatment, add one repetition.\nWhen 8 weeks have passed after treatment, drop reps to the original count and add a set.'
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize:20, fontFamily: 'PlayfairDisplay', color: Colors.black54)),
+                        ),
+                        Container(
+                          child: const Text(
+                              '\nProgram adapted from Lee 2020 - Postoperative Rehabilitation after Hip Fracture and Latham 2014 - Effect of a home-based exercise program on functional recovery following rehabilitation after hip fracture'
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize:15, fontFamily: 'PlayfairDisplay', color: Colors.black)),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.only(top:50),
+                        ),
                         FractionallySizedBox(
                             widthFactor: 0.5,
                             child: ElevatedButton(
