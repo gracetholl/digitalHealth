@@ -2,7 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -128,14 +131,14 @@ class HomePage extends StatelessWidget {
                 child: const Text(
                     '\nNotes to remember:',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize:30, fontFamily: 'PlayfairDisplay', color: Colors.black54)),
+                    style: TextStyle(fontSize:30, fontFamily: 'Nunito', color: Colors.black87)),
               ),
               Container(
                 padding: const EdgeInsets.all(10.0),
                 child: const Text(
-                    '\n1. Exercises should be performed 3x a week at a similar time of day.\n2. Be sure to repeat exercises bilaterally (both legs, both arms, etc.).\n3. Choose resistance based on maximum level that is comfortable.',
+                    '\n1. Exercises should be performed 3x a week at a similar time of day.\n\n2. Be sure to repeat exercises bilaterally (both legs, both arms, etc.).\n\n3. Choose resistance based on maximum level that is comfortable.\n',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize:23, fontFamily: 'PlayfairDisplay', color: Colors.black38)),
+                    style: TextStyle(fontSize:23, fontFamily: 'Nunito', color: Colors.black87)),
               ),
 
             FractionallySizedBox(
@@ -184,13 +187,13 @@ class Exercise1 extends StatelessWidget {
         child: const Text(
             'Directions: 2 sets x 12 reps with 30s rest',
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize:22, fontFamily: 'PlayfairDisplay', color: Colors.black)),
+            style: TextStyle(fontSize:22, fontFamily: 'Nunito', color: Colors.black)),
       ),
       Container(
         child: const Text(
-            'Use Theraband for resistance',
+            'Use Theraband for resistance\n',
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize:22, fontFamily: 'PlayfairDisplay', color: Colors.black54)),
+            style: TextStyle(fontSize:22, fontFamily: 'Nunito', color: Colors.black54)),
       ),
       /*Container(
         padding: const EdgeInsets.only(top:100),
@@ -243,18 +246,18 @@ class Exercise2 extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize:30, fontFamily: 'PlayfairDisplay', color: Colors.red)),
             ),
-            Image.asset("assets/images/hipextension.gif", width:80, height:350),
+            Image.asset('assets/images/tricepsExtension.gif', width:80, height:350),
             Container(
               child: const Text(
                   'Directions: 2 sets x 8 reps with 30s rest',
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize:22, fontFamily: 'PlayfairDisplay', color: Colors.black)),
+                  style: TextStyle(fontSize:22, fontFamily: 'Nunito', color: Colors.black)),
             ),
             Container(
               child: const Text(
-                  'Use Theraband for resistance',
+                  'Use Theraband for resistance\n',
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize:22, fontFamily: 'PlayfairDisplay', color: Colors.black54)),
+                  style: TextStyle(fontSize:22, fontFamily: 'Nunito', color: Colors.black54)),
             ),
             FractionallySizedBox(
                 widthFactor: 0.50,
@@ -302,18 +305,18 @@ class Exercise3 extends StatelessWidget {
                               textAlign: TextAlign.center,
                               style: TextStyle(fontSize:30, fontFamily: 'PlayfairDisplay', color: Colors.red)),
                         ),
-                        Image.asset("assets/images/hipextension.gif", width:80, height:350),
+                        Image.asset("assets/images/chairSquats.gif", width:80, height:350),
                         Container(
                           child: const Text(
                               'Directions: 2 sets x 8 reps with 30s rest',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:22, fontFamily: 'PlayfairDisplay', color: Colors.black)),
+                              style: TextStyle(fontSize:22, fontFamily: 'Nunito', color: Colors.black)),
                         ),
                         Container(
                           child: const Text(
-                              'Use weighted vest for resistance',
+                              'Use weighted vest for resistance\n',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:22, fontFamily: 'PlayfairDisplay', color: Colors.black54)),
+                              style: TextStyle(fontSize:22, fontFamily: 'Nunito', color: Colors.black54)),
                         ),
                         FractionallySizedBox(
                             widthFactor: 0.50,
@@ -362,18 +365,18 @@ class Exercise4 extends StatelessWidget {
                               textAlign: TextAlign.center,
                               style: TextStyle(fontSize:30, fontFamily: 'PlayfairDisplay', color: Colors.red)),
                         ),
-                        Image.asset("assets/images/hipextension.gif", width:80, height:350),
+                        Image.asset("assets/images/resistedRowing.gif", width:80, height:350),
                         Container(
                           child: const Text(
                               'Directions: 2 sets x 8 reps with 30s rest',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:22, fontFamily: 'PlayfairDisplay', color: Colors.black)),
+                              style: TextStyle(fontSize:22, fontFamily: 'Nunito', color: Colors.black)),
                         ),
                         Container(
                           child: const Text(
-                              'Use Theraband for resistance',
+                              'Use Theraband for resistance\n',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:22, fontFamily: 'PlayfairDisplay', color: Colors.black54)),
+                              style: TextStyle(fontSize:22, fontFamily: 'Nunito', color: Colors.black54)),
                         ),
                         FractionallySizedBox(
                             widthFactor: 0.50,
@@ -423,18 +426,18 @@ class Exercise5 extends StatelessWidget {
                               textAlign: TextAlign.center,
                               style: TextStyle(fontSize:30, fontFamily: 'PlayfairDisplay', color: Colors.red)),
                         ),
-                        Image.asset("assets/images/hipextension.gif", width:80, height:350),
+                        Image.asset("assets/images/stepUp.gif", width:80, height:350),
                         Container(
                           child: const Text(
                               'Directions: 2 sets x 8 reps with 30s rest',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:22, fontFamily: 'PlayfairDisplay', color: Colors.black)),
+                              style: TextStyle(fontSize:22, fontFamily: 'Nunito', color: Colors.black)),
                         ),
                         Container(
                           child: const Text(
-                              'Use weighted vest for resistance',
+                              'Use weighted vest for resistance\n',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:22, fontFamily: 'PlayfairDisplay', color: Colors.black54)),
+                              style: TextStyle(fontSize:22, fontFamily: 'Nunito', color: Colors.black54)),
                         ),
                         FractionallySizedBox(
                             widthFactor: 0.50,
@@ -484,18 +487,18 @@ class Exercise6 extends StatelessWidget {
                               textAlign: TextAlign.center,
                               style: TextStyle(fontSize:30, fontFamily: 'PlayfairDisplay', color: Colors.red)),
                         ),
-                        Image.asset("assets/images/hipextension.gif", width:80, height:350),
+                        Image.asset("assets/images/diagonalReach.gif", width:80, height:350),
                         Container(
                           child: const Text(
                               'Directions: 2 sets x 8 reps with 30s rest',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:22, fontFamily: 'PlayfairDisplay', color: Colors.black)),
+                              style: TextStyle(fontSize:22, fontFamily: 'Nunito', color: Colors.black)),
                         ),
                         Container(
                           child: const Text(
-                              'Use Theraband for resistance',
+                              'Use Theraband for resistance\n',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:22, fontFamily: 'PlayfairDisplay', color: Colors.black54)),
+                              style: TextStyle(fontSize:22, fontFamily: 'Nunito', color: Colors.black54)),
                         ),
                         FractionallySizedBox(
                             widthFactor: 0.50,
@@ -544,18 +547,18 @@ class Exercise7 extends StatelessWidget {
                               textAlign: TextAlign.center,
                               style: TextStyle(fontSize:30, fontFamily: 'PlayfairDisplay', color: Colors.red)),
                         ),
-                        Image.asset("assets/images/hipextension.gif", width:80, height:350),
+                        Image.asset("assets/images/calfRaises.gif", width:80, height:350),
                         Container(
                           child: const Text(
                               'Directions: 2 sets x 12 reps with 30s rest',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:22, fontFamily: 'PlayfairDisplay', color: Colors.black)),
+                              style: TextStyle(fontSize:22, fontFamily: 'Nunito', color: Colors.black)),
                         ),
                         Container(
                           child: const Text(
-                              'Use weighted vest for resistance',
+                              'Use weighted vest for resistance\n',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:22, fontFamily: 'PlayfairDisplay', color: Colors.black54)),
+                              style: TextStyle(fontSize:22, fontFamily: 'Nunito', color: Colors.black54)),
                         ),
                         FractionallySizedBox(
                             widthFactor: 0.50,
@@ -610,16 +613,16 @@ class Finish extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.all(16.0),
                           child: const Text(
-                              '\nEach week after treatment, add one repetition.\nWhen 8 weeks have passed after treatment, drop reps to the original count and add a set.',
+                              '\nEach week after treatment, add one repetition.\n\nWhen 8 weeks have passed after treatment, drop reps to the original count and add a set.\n',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:20, fontFamily: 'PlayfairDisplay', color: Colors.black54)),
+                              style: TextStyle(fontSize:20, fontFamily: 'Nunito', color: Colors.black87)),
                         ),
                         Container(
                           padding: const EdgeInsets.all(16.0),
                           child: const Text(
-                              '\nProgram adapted from Lee 2020 - Postoperative Rehabilitation after Hip Fracture and Latham 2014 - Effect of a home-based exercise program on functional recovery following rehabilitation after hip fracture',
+                              '\nProgram adapted from Lee 2020 - Postoperative Rehabilitation after Hip Fracture and Latham 2014 - Effect of a home-based exercise program on functional recovery following rehabilitation after hip fracture\n',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:15, fontFamily: 'PlayfairDisplay', color: Colors.black)),
+                              style: TextStyle(fontSize:15, fontFamily: 'Nunito', fontStyle: FontStyle.italic ,color: Colors.black)),
                         ),
                         Container(
                           padding: const EdgeInsets.only(top:50),
