@@ -158,9 +158,11 @@ class HomePage extends StatelessWidget {
 
 }
 
+
+
 // Hip Extension
 class Exercise1 extends StatelessWidget {
-
+int val = -1;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -202,6 +204,7 @@ class Exercise1 extends StatelessWidget {
       ),*/
       FractionallySizedBox(
           widthFactor: 0.50,
+
           child: ElevatedButton(
             child: const Text('Next Exercise', style: const TextStyle(fontSize: 18)),
             onPressed: () {
@@ -209,12 +212,205 @@ class Exercise1 extends StatelessWidget {
                 context: context,
                 builder: (context) => AlertDialog(
                   title: Text('Exercise Feedback'),
-                  content: Text('Did you experience any pain while doing this exercise?'),
+
+                  content: StatefulBuilder(
+                    builder: (BuildContext context, StateSetter setState){
+                      return Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                      Text('Did you experience any pain while doing this exercise?'),
+                      Container(
+                        padding: EdgeInsets.only(bottom: 20.0),
+                      ),
+
+
+                      ListTile(
+                      title: Text("0      No Pain"),
+                      visualDensity: VisualDensity(horizontal:0, vertical:-4),
+                      leading: Radio(
+                      value: 0,
+                      groupValue: val,
+                      onChanged: (value) {
+                      setState((){
+                      val = (int) as int; value;
+
+                      });
+                      },
+                      activeColor: Colors.red,
+                    ),
+
+                      ),
+                          ListTile(
+                            title: Text("1"),
+                            visualDensity: VisualDensity(horizontal:0, vertical:-4),
+
+                            leading: Radio(
+                              value: 1,
+                              groupValue: val,
+                              onChanged: (value) {
+                                setState((){
+                                  val = (int) as int; value;
+                                });
+                              },
+                              activeColor: Colors.red,
+                            ),
+
+                          ),
+                          ListTile(
+                            title: Text("2"),
+                            visualDensity: VisualDensity(horizontal:0, vertical:-4),
+
+                            leading: Radio(
+                              value: 2,
+                              groupValue: val,
+                              onChanged: (value) {
+                                setState((){
+                                  val = (int) as int; value;
+                                });
+                              },
+                              activeColor: Colors.red,
+                            ),
+
+                          ),
+                          ListTile(
+                            title: Text("3"),
+                            visualDensity: VisualDensity(horizontal:0, vertical:-4),
+
+                            leading: Radio(
+                              value: 3,
+                              groupValue: val,
+                              onChanged: (value) {
+                                setState((){
+                                  val = (int) as int; value;
+                                });
+                              },
+                              activeColor: Colors.red,
+                            ),
+
+                          ),
+                          ListTile(
+                            title: Text("4"),
+                            visualDensity: VisualDensity(horizontal:0, vertical:-4),
+
+                            leading: Radio(
+                              value: 4,
+                              groupValue: val,
+                              onChanged: (value) {
+                                setState((){
+                                  val = (int) as int; value;
+                                });
+                              },
+                              activeColor: Colors.red,
+                            ),
+
+                          ),
+                          ListTile(
+                            title: Text("5"),
+                            visualDensity: VisualDensity(horizontal:0, vertical:-4),
+
+                            leading: Radio(
+                              value: 5,
+                              groupValue: val,
+                              onChanged: (value) {
+                                setState((){
+                                  val = (int) as int; value;
+                                });
+                              },
+                              activeColor: Colors.red,
+                            ),
+
+                          ),
+                          ListTile(
+                            title: Text("6"),
+                            visualDensity: VisualDensity(horizontal:0, vertical:-4),
+
+                            leading: Radio(
+                              value: 6,
+                              groupValue: val,
+                              onChanged: (value) {
+                                setState((){
+                                  val = (int) as int; value;
+                                });
+                              },
+                              activeColor: Colors.red,
+                            ),
+
+                          ),
+                          ListTile(
+                            title: Text("7"),
+                            visualDensity: VisualDensity(horizontal:0, vertical:-4),
+
+                            leading: Radio(
+                              value: 7,
+                              groupValue: val,
+                              onChanged: (value) {
+                                setState((){
+                                  val = (int) as int; value;
+                                });
+                              },
+                              activeColor: Colors.red,
+                            ),
+
+                          ),
+                          ListTile(
+                            title: Text("8"),
+                            visualDensity: VisualDensity(horizontal:0, vertical:-4),
+
+                            leading: Radio(
+                              value: 8,
+                              groupValue: val,
+                              onChanged: (value) {
+                                setState((){
+                                  val = (int) as int; value;
+                                });
+                              },
+                              activeColor: Colors.red,
+                            ),
+
+                          ),
+                          ListTile(
+                            title: Text("9"),
+                            visualDensity: VisualDensity(horizontal:0, vertical:-4),
+
+                            leading: Radio(
+                              value: 9,
+                              groupValue: val,
+                              onChanged: (value) {
+                                setState((){
+                                  val = (int) as int; value;
+                                });
+                              },
+                              activeColor: Colors.red,
+                            ),
+
+                          ),
+                          ListTile(
+                            title: Text("10     Extreme Pain"),
+                            visualDensity: VisualDensity(horizontal:0, vertical:-4),
+
+                            leading: Radio(
+                              value: 10,
+                              groupValue: val,
+                              onChanged: (value) {
+                                setState((){
+                                  val = (int) as int; value;
+                                });
+                              },
+                              activeColor: Colors.red,
+                            ),
+
+                          ),
+
+
+                    ]);}),
+
 
                   actions: <Widget>[
+
                     TextButton(
-                      child: Text('Submit'),
-                      onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise2()))),
+
+                      child: Text('Submit', style: TextStyle(fontSize: 19)),
+                        onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise2()))),
 
                   ],
                 ),
