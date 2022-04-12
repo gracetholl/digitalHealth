@@ -125,27 +125,29 @@ class HomePage extends StatelessWidget {
                     child: const Text(
                       'Welcome!',
                         textAlign: TextAlign.center,
-                    style: TextStyle(fontSize:50, fontFamily: 'PlayfairDisplay', color: Colors.red)),
+                    style: TextStyle(fontSize:50, fontFamily: 'Lato', color: Colors.red)),
                   ),
               Container(
                 child: const Text(
                     '\nNotes to remember:',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize:30, fontFamily: 'Nunito', color: Colors.black87)),
+                    style: TextStyle(fontSize:30, fontFamily: 'Lato', color: Colors.black)),
               ),
               Container(
                 padding: const EdgeInsets.all(10.0),
                 child: const Text(
                     '\n1. Exercises should be performed 3x a week at a similar time of day.\n\n2. Be sure to repeat exercises bilaterally (both legs, both arms, etc.).\n\n3. Choose resistance based on maximum level that is comfortable.\n',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize:23, fontFamily: 'Nunito', color: Colors.black87)),
+                    style: TextStyle(fontSize:23, fontFamily: 'Lato', color: Colors.black)),
               ),
-
+            Container(
+              padding: const EdgeInsets.only(top:20.0),
+            ),
             FractionallySizedBox(
-              widthFactor: 0.50,
+              widthFactor: 0.75,
               child: ElevatedButton(
 
-                    child: const Text('Get Started', style: const TextStyle(fontSize: 15)),
+                    child: const Text('Get Started', style: const TextStyle(fontSize: 20)),
                     onPressed: () {
                       Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise1()));
                     },
@@ -180,20 +182,20 @@ class Exercise1 extends StatelessWidget {
         child: const Text(
             '\nExercise 1: Hip Extensions',
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize:30, fontFamily: 'PlayfairDisplay', color: Colors.red)),
+            style: TextStyle(fontSize:30, fontFamily: 'Lato', color: Colors.red)),
       ),
       Image.asset("assets/images/hipextension.gif", width:80, height:350),
       Container(
         child: const Text(
             'Directions: 2 sets x 12 reps with 30s rest',
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize:22, fontFamily: 'Nunito', color: Colors.black)),
+            style: TextStyle(fontSize:22, fontFamily: 'Lato', color: Colors.black)),
       ),
       Container(
         child: const Text(
             'Use Theraband for resistance\n',
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize:22, fontFamily: 'Nunito', color: Colors.black54)),
+            style: TextStyle(fontSize:22, fontFamily: 'Lato', color: Colors.black)),
       ),
       /*Container(
         padding: const EdgeInsets.only(top:100),
@@ -201,9 +203,22 @@ class Exercise1 extends StatelessWidget {
       FractionallySizedBox(
           widthFactor: 0.50,
           child: ElevatedButton(
-            child: const Text('Next Exercise', style: const TextStyle(fontSize: 15)),
+            child: const Text('Next Exercise', style: const TextStyle(fontSize: 18)),
             onPressed: () {
-              Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise2()));
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: Text('Exercise Feedback'),
+                  content: Text('Did you experience any pain while doing this exercise?'),
+
+                  actions: <Widget>[
+                    TextButton(
+                      child: Text('Submit'),
+                      onPressed: () => Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise2()))),
+
+                  ],
+                ),
+              );
             },
           )
       ),
@@ -244,25 +259,25 @@ class Exercise2 extends StatelessWidget {
               child: const Text(
                   '\nExercise 2: Tricep Extensions',
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize:30, fontFamily: 'PlayfairDisplay', color: Colors.red)),
+                  style: TextStyle(fontSize:30, fontFamily: 'Lato', color: Colors.red)),
             ),
             Image.asset('assets/images/tricepsExtension.gif', width:80, height:350),
             Container(
               child: const Text(
                   'Directions: 2 sets x 8 reps with 30s rest',
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize:22, fontFamily: 'Nunito', color: Colors.black)),
+                  style: TextStyle(fontSize:22, fontFamily: 'Lato', color: Colors.black)),
             ),
             Container(
               child: const Text(
                   'Use Theraband for resistance\n',
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize:22, fontFamily: 'Nunito', color: Colors.black54)),
+                  style: TextStyle(fontSize:22, fontFamily: 'Lato', color: Colors.black)),
             ),
             FractionallySizedBox(
                 widthFactor: 0.50,
                 child: ElevatedButton(
-                  child: const Text('Next Exercise', style: const TextStyle(fontSize: 15)),
+                  child: const Text('Next Exercise', style: const TextStyle(fontSize: 18)),
                   onPressed: () {
                     Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise3()));
                   },
@@ -303,25 +318,25 @@ class Exercise3 extends StatelessWidget {
                           child: const Text(
                               '\nExercise 3: Chair Squats',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:30, fontFamily: 'PlayfairDisplay', color: Colors.red)),
+                              style: TextStyle(fontSize:30, fontFamily: 'Lato', color: Colors.red)),
                         ),
                         Image.asset("assets/images/chairSquats.gif", width:80, height:350),
                         Container(
                           child: const Text(
                               'Directions: 2 sets x 8 reps with 30s rest',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:22, fontFamily: 'Nunito', color: Colors.black)),
+                              style: TextStyle(fontSize:22, fontFamily: 'Lato', color: Colors.black)),
                         ),
                         Container(
                           child: const Text(
                               'Use weighted vest for resistance\n',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:22, fontFamily: 'Nunito', color: Colors.black54)),
+                              style: TextStyle(fontSize:22, fontFamily: 'Lato', color: Colors.black)),
                         ),
                         FractionallySizedBox(
                             widthFactor: 0.50,
                             child: ElevatedButton(
-                              child: const Text('Next Exercise', style: const TextStyle(fontSize: 15)),
+                              child: const Text('Next Exercise', style: const TextStyle(fontSize: 18)),
                               onPressed: () {
                                 Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise4()));
                               },
@@ -363,25 +378,25 @@ class Exercise4 extends StatelessWidget {
                           child: const Text(
                               '\nExercise 4: Double Arm Lift',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:30, fontFamily: 'PlayfairDisplay', color: Colors.red)),
+                              style: TextStyle(fontSize:30, fontFamily: 'Lato', color: Colors.red)),
                         ),
                         Image.asset("assets/images/resistedRowing.gif", width:80, height:350),
                         Container(
                           child: const Text(
                               'Directions: 2 sets x 8 reps with 30s rest',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:22, fontFamily: 'Nunito', color: Colors.black)),
+                              style: TextStyle(fontSize:22, fontFamily: 'Lato', color: Colors.black)),
                         ),
                         Container(
                           child: const Text(
                               'Use Theraband for resistance\n',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:22, fontFamily: 'Nunito', color: Colors.black54)),
+                              style: TextStyle(fontSize:22, fontFamily: 'Lato', color: Colors.black)),
                         ),
                         FractionallySizedBox(
                             widthFactor: 0.50,
                             child: ElevatedButton(
-                              child: const Text('Next Exercise', style: const TextStyle(fontSize: 15)),
+                              child: const Text('Next Exercise', style: const TextStyle(fontSize: 18)),
                               onPressed: () {
                                 Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise5()));
                               },
@@ -424,25 +439,25 @@ class Exercise5 extends StatelessWidget {
                           child: const Text(
                               '\nExercise 5: Step Up and Down',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:30, fontFamily: 'PlayfairDisplay', color: Colors.red)),
+                              style: TextStyle(fontSize:30, fontFamily: 'Lato', color: Colors.red)),
                         ),
                         Image.asset("assets/images/stepUp.gif", width:80, height:350),
                         Container(
                           child: const Text(
                               'Directions: 2 sets x 8 reps with 30s rest',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:22, fontFamily: 'Nunito', color: Colors.black)),
+                              style: TextStyle(fontSize:22, fontFamily: 'Lato', color: Colors.black)),
                         ),
                         Container(
                           child: const Text(
                               'Use weighted vest for resistance\n',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:22, fontFamily: 'Nunito', color: Colors.black54)),
+                              style: TextStyle(fontSize:22, fontFamily: 'Lato', color: Colors.black)),
                         ),
                         FractionallySizedBox(
                             widthFactor: 0.50,
                             child: ElevatedButton(
-                              child: const Text('Next Exercise', style: const TextStyle(fontSize: 15)),
+                              child: const Text('Next Exercise', style: const TextStyle(fontSize: 18)),
                               onPressed: () {
                                 Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise6()));
                               },
@@ -485,25 +500,25 @@ class Exercise6 extends StatelessWidget {
                           child: const Text(
                               '\nExercise 6: Diagonal Reach',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:30, fontFamily: 'PlayfairDisplay', color: Colors.red)),
+                              style: TextStyle(fontSize:30, fontFamily: 'Lato', color: Colors.red)),
                         ),
                         Image.asset("assets/images/diagonalReach.gif", width:80, height:350),
                         Container(
                           child: const Text(
                               'Directions: 2 sets x 8 reps with 30s rest',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:22, fontFamily: 'Nunito', color: Colors.black)),
+                              style: TextStyle(fontSize:22, fontFamily: 'Lato', color: Colors.black)),
                         ),
                         Container(
                           child: const Text(
                               'Use Theraband for resistance\n',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:22, fontFamily: 'Nunito', color: Colors.black54)),
+                              style: TextStyle(fontSize:22, fontFamily: 'Lato', color: Colors.black)),
                         ),
                         FractionallySizedBox(
                             widthFactor: 0.50,
                             child: ElevatedButton(
-                              child: const Text('Next Exercise', style: const TextStyle(fontSize: 15)),
+                              child: const Text('Next Exercise', style: const TextStyle(fontSize: 18)),
                               onPressed: () {
                                 Navigator.push(context, new MaterialPageRoute(builder: (context) => new Exercise7()));
                               },
@@ -545,25 +560,25 @@ class Exercise7 extends StatelessWidget {
                           child: const Text(
                               '\nExercise 7: Calf Raises',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:30, fontFamily: 'PlayfairDisplay', color: Colors.red)),
+                              style: TextStyle(fontSize:30, fontFamily: 'Lato', color: Colors.red)),
                         ),
                         Image.asset("assets/images/calfRaises.gif", width:80, height:350),
                         Container(
                           child: const Text(
                               'Directions: 2 sets x 12 reps with 30s rest',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:22, fontFamily: 'Nunito', color: Colors.black)),
+                              style: TextStyle(fontSize:22, fontFamily: 'Lato', color: Colors.black)),
                         ),
                         Container(
                           child: const Text(
                               'Use weighted vest for resistance\n',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:22, fontFamily: 'Nunito', color: Colors.black54)),
+                              style: TextStyle(fontSize:22, fontFamily: 'Lato', color: Colors.black)),
                         ),
                         FractionallySizedBox(
                             widthFactor: 0.50,
                             child: ElevatedButton(
-                              child: const Text('Next Exercise', style: const TextStyle(fontSize: 15)),
+                              child: const Text('Next Exercise', style: const TextStyle(fontSize: 18)),
                               onPressed: () {
                                 Navigator.push(context, new MaterialPageRoute(builder: (context) => new Finish()));
                               },
@@ -608,21 +623,21 @@ class Finish extends StatelessWidget {
                           child: const Text(
                               '\nCongratulations!\nWorkout complete',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:35, fontFamily: 'PlayfairDisplay', color: Colors.red)),
+                              style: TextStyle(fontSize:35, fontFamily: 'Lato', color: Colors.red)),
                         ),
                         Container(
                           padding: const EdgeInsets.all(16.0),
                           child: const Text(
                               '\nEach week after treatment, add one repetition.\n\nWhen 8 weeks have passed after treatment, drop reps to the original count and add a set.\n',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:20, fontFamily: 'Nunito', color: Colors.black87)),
+                              style: TextStyle(fontSize:20, fontFamily: 'Lato', color: Colors.black)),
                         ),
                         Container(
                           padding: const EdgeInsets.all(16.0),
                           child: const Text(
                               '\nProgram adapted from Lee 2020 - Postoperative Rehabilitation after Hip Fracture and Latham 2014 - Effect of a home-based exercise program on functional recovery following rehabilitation after hip fracture\n',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize:15, fontFamily: 'Nunito', fontStyle: FontStyle.italic ,color: Colors.black)),
+                              style: TextStyle(fontSize:15, fontFamily: 'Lato', fontStyle: FontStyle.italic ,color: Colors.black)),
                         ),
                         Container(
                           padding: const EdgeInsets.only(top:50),
