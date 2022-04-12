@@ -23,3 +23,9 @@ https://www.codegrepper.com/code-examples/dart/set+width+to+elevatedbutton+flutt
 https://fonts.google.com/
 
 https://api.flutter.dev/flutter/material/AlertDialog-class.html
+
+https://stackoverflow.com/questions/56222962/how-to-change-from-stateless-widget-to-stateful-widget
+
+https://stackoverflow.com/questions/63912538/radio-button-not-changing-the-selection-in-flutter
+
+https://stackoverflow.com/questions/68660324/how-to-add-flutter-radio-button-with-right-side-of-image
