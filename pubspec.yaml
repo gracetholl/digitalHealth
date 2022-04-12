@@ -94,6 +94,10 @@ flutter:
          - asset: assets/fonts/Nunito-Italic-VariableFont_wght.ttf
            style: italic
          - asset: assets/fonts/Nunito-VariableFont_wght.ttf
+     - family: Lato
+       fonts:
+         - asset: assets/fonts/Lato-Regular.ttf
+
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
