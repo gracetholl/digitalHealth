@@ -3,11 +3,13 @@
 // found in the LICENSE file.
 
 import 'dart:ui';
-
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -15,7 +17,6 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   static const String _title = '';
-
 
   @override
   Widget build(BuildContext context) {
@@ -40,16 +41,13 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 
-
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-
   @override
   Widget build(BuildContext context) {
     return Padding(
-
         padding: const EdgeInsets.only(top:100),
         child: ListView(
           children: <Widget>[
@@ -64,7 +62,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 controller: nameController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'User Name',
+                  labelText: 'Email',
                 ),
               ),
             ),
@@ -81,18 +79,33 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             ),
             TextButton(
               onPressed: () {
+                FirebaseAuth.instance.sendPasswordResetEmail(email: nameController.text);
                 //forgot password screen
               },
               child: const Text('Forgot Password',),
             ),
             Container(
                 height: 50,
-                padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+                child: ElevatedButton(
+                  child: const Text('Register'),
+                  onPressed: () {
+                    print(nameController.text);
+                    print(passwordController.text);
+                    FirebaseAuth.instance.createUserWithEmailAndPassword(email: nameController.text, password: passwordController.text);
+                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new HomePage()));
+                  },
+                )
+            ),
+            Container(
+                height: 50,
+                padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
                 child: ElevatedButton(
                   child: const Text('Login'),
                   onPressed: () {
                     print(nameController.text);
                     print(passwordController.text);
+                    FirebaseAuth.instance.signInWithEmailAndPassword(email: nameController.text, password: passwordController.text);
                     Navigator.push(context, new MaterialPageRoute(builder: (context) => new HomePage()));
                   },
                 )
@@ -215,31 +228,32 @@ int val = -1;
 
                   content: StatefulBuilder(
                     builder: (BuildContext context, StateSetter setState){
-                      return Column(
+                      return SingleChildScrollView(
+                        child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                      Text('Did you experience any pain while doing this exercise?'),
-                      Container(
+                          Text('Did you experience any pain while doing this exercise?'),
+                          Container(
                         padding: EdgeInsets.only(bottom: 20.0),
-                      ),
+                        ),
 
 
-                      ListTile(
-                      title: Text("0      No Pain"),
-                      visualDensity: VisualDensity(horizontal:0, vertical:-4),
-                      leading: Radio(
-                      value: 0,
-                      groupValue: val,
-                      onChanged: (value) {
-                      setState((){
-                      val = (int) as int; value;
+                          ListTile(
+                            title: Text("0      No Pain"),
+                          visualDensity: VisualDensity(horizontal:0, vertical:-4),
+                            leading: Radio(
+                          value: 0,
+                          groupValue: val,
+                          onChanged: (value) {
+                          setState((){
+                          val = (int) as int; value;
 
-                      });
-                      },
-                      activeColor: Colors.red,
-                    ),
+                          });
+                          },
+                              activeColor: Colors.red,
+                            ),
 
-                      ),
+                          ),
                           ListTile(
                             title: Text("1"),
                             visualDensity: VisualDensity(horizontal:0, vertical:-4),
@@ -386,12 +400,12 @@ int val = -1;
                           ),
                           ListTile(
                             title: Text("10     Extreme Pain"),
-                            visualDensity: VisualDensity(horizontal:0, vertical:-4),
+                              visualDensity: VisualDensity(horizontal:0, vertical:-4),
 
-                            leading: Radio(
-                              value: 10,
-                              groupValue: val,
-                              onChanged: (value) {
+                              leading: Radio(
+                                value: 10,
+                                groupValue: val,
+                                onChanged: (value) {
                                 setState((){
                                   val = (int) as int; value;
                                 });
@@ -399,10 +413,11 @@ int val = -1;
                               activeColor: Colors.red,
                             ),
 
-                          ),
-
-
-                    ]);}),
+                          )
+                        ]
+                        )
+                      );
+                    }),
 
 
                   actions: <Widget>[
