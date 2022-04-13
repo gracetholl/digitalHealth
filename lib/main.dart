@@ -112,7 +112,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                             builder: (context) => new HomePage()));
                   },
                 )),
-            TextButton(
+            Container(
+              padding: EdgeInsets.fromLTRB(110, 0, 100, 0),
+            child: TextButton(
               onPressed: () {
                 FirebaseAuth.instance
                     .sendPasswordResetEmail(email: nameController.text);
@@ -122,7 +124,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 'Forgot Password',
                   style: TextStyle(fontSize:15)
               ),
-            ),
+            )),
           ],
         ));
   }
