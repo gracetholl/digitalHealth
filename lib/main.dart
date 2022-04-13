@@ -1947,16 +1947,6 @@ class _FinishState extends State<Finish> {
                                   fontFamily: 'Lato',
                                   color: Colors.red)),
                         ),
-                        Container(
-                          padding: const EdgeInsets.all(16.0),
-                          child: const Text(
-                              '\nEach week after treatment, add one repetition.\n\nWhen 8 weeks have passed after treatment, drop reps to the original count and add a set.\n',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontFamily: 'Lato',
-                                  color: Colors.black)),
-                        ),
 
                         FractionallySizedBox(
                             widthFactor: 0.5,
