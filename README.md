@@ -29,3 +29,5 @@ https://stackoverflow.com/questions/56222962/how-to-change-from-stateless-widget
 https://stackoverflow.com/questions/63912538/radio-button-not-changing-the-selection-in-flutter
 
 https://stackoverflow.com/questions/68660324/how-to-add-flutter-radio-button-with-right-side-of-image
+
+https://stackoverflow.com/questions/49625730/how-do-i-add-a-bullet-or-create-a-bulleted-list-in-flutter
