@@ -163,7 +163,7 @@ class HomePage extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(10.0),
                   child: const Text(
-                      '\n1. Exercises should be performed 3x a week at a similar time of day.\n\n2. Be sure to repeat exercises bilaterally (both legs, both arms, etc.).\n\n3. Choose resistance based on maximum level that is comfortable.\n',
+                      '\n1. Exercises should be performed 3 times a week at a similar time of day for 6 months.\n\n2. Be sure to repeat exercises bilaterally (both legs, both arms, etc.).\n\n3. Choose resistance based on maximum level that is comfortable.\n',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 23,
@@ -224,7 +224,10 @@ class _Exercise1State extends State<Exercise1> {
                 builder: (context) => ListView(
                       children: <Widget>[
                         Container(
-                          child: const Text('\nExercise 1: Hip Extensions',
+                          padding: EdgeInsets.only(bottom:10.0),
+                        ),
+                        Container(
+                          child: const Text('Exercise 1: Hip Extensions\n',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 30,
@@ -232,27 +235,17 @@ class _Exercise1State extends State<Exercise1> {
                                   color: Colors.red)),
                         ),
                         Image.asset("assets/images/hipextension.gif",
-                            width: 80, height: 350),
+                            width: 150, height: 350),
                         Container(
                           child: const Text(
-                              'Directions: 2 sets x 12 reps with 30s rest',
+                              'Sets: 2    Reps: 12    Rest: 30s\nResistance: Use TheraBand\nTempo: 2s going out 2s coming back\n',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 22,
                                   fontFamily: 'Lato',
                                   color: Colors.black)),
                         ),
-                        Container(
-                          child: const Text('Use Theraband for resistance\n',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 22,
-                                  fontFamily: 'Lato',
-                                  color: Colors.black)),
-                        ),
-                        /*Container(
-        padding: const EdgeInsets.only(top:100),
-      ),*/
+
                         FractionallySizedBox(
                             widthFactor: 0.50,
                             child: ElevatedButton(
@@ -474,26 +467,21 @@ class _Exercise2State extends State<Exercise2> {
                 builder: (context) => ListView(
                       children: <Widget>[
                         Container(
-                          child: const Text('\nExercise 2: Tricep Extensions',
+                          padding: EdgeInsets.only(bottom:10.0),
+                        ),
+                        Container(
+                          child: const Text('Exercise 2: Tricep Extensions\n',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 30,
                                   fontFamily: 'Lato',
                                   color: Colors.red)),
                         ),
-                        Image.asset('assets/images/tricepsExtension.gif',
-                            width: 80, height: 350),
+                        Image.asset("assets/images/tricepsExtension.gif",
+                            width: 200, height: 300),
                         Container(
                           child: const Text(
-                              'Directions: 2 sets x 8 reps with 30s rest',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 22,
-                                  fontFamily: 'Lato',
-                                  color: Colors.black)),
-                        ),
-                        Container(
-                          child: const Text('Use Theraband for resistance\n',
+                              '\nSets: 2    Reps: 8    Rest: 30s\nResistance: Use TheraBand\nTempo: 2s going out 2s coming back\n',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 22,
@@ -722,7 +710,10 @@ class _Exercise3State extends State<Exercise3> {
                 builder: (context) => ListView(
                       children: <Widget>[
                         Container(
-                          child: const Text('\nExercise 3: Chair Squats',
+                          padding: EdgeInsets.only(bottom:10.0),
+                        ),
+                        Container(
+                          child: const Text('Exercise 3: Chair Squats\n',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 30,
@@ -730,19 +721,10 @@ class _Exercise3State extends State<Exercise3> {
                                   color: Colors.red)),
                         ),
                         Image.asset("assets/images/chairSquats.gif",
-                            width: 80, height: 350),
+                            width: 220, height: 300),
                         Container(
                           child: const Text(
-                              'Directions: 2 sets x 8 reps with 30s rest',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 22,
-                                  fontFamily: 'Lato',
-                                  color: Colors.black)),
-                        ),
-                        Container(
-                          child: const Text(
-                              'Use weighted vest for resistance\n',
+                              '\nSets: 2    Reps: 8    Rest: 30s\nResistance: Use weighted vest\nTempo: 2s going out 2s coming back\n',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 22,
@@ -970,7 +952,10 @@ class _Exercise4State extends State<Exercise4> {
                 builder: (context) => ListView(
                       children: <Widget>[
                         Container(
-                          child: const Text('\nExercise 4: Double Arm Lift',
+                          padding: EdgeInsets.only(bottom:10.0),
+                        ),
+                        Container(
+                          child: const Text('Exercise 4: Double Arm Lift\n',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 30,
@@ -978,18 +963,10 @@ class _Exercise4State extends State<Exercise4> {
                                   color: Colors.red)),
                         ),
                         Image.asset("assets/images/resistedRowing.gif",
-                            width: 80, height: 350),
+                            width: 175, height: 300),
                         Container(
                           child: const Text(
-                              'Directions: 2 sets x 8 reps with 30s rest',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 22,
-                                  fontFamily: 'Lato',
-                                  color: Colors.black)),
-                        ),
-                        Container(
-                          child: const Text('Use Theraband for resistance\n',
+                              '\nSets: 2    Reps: 8    Rest: 30s\nResistance: Use TheraBand\nTempo: 2s going out 2s coming back\n',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 22,
@@ -1217,7 +1194,10 @@ class _Exercise5State extends State<Exercise5> {
                 builder: (context) => ListView(
                       children: <Widget>[
                         Container(
-                          child: const Text('\nExercise 5: Step Up and Down',
+                          padding: EdgeInsets.only(bottom:10.0),
+                        ),
+                        Container(
+                          child: const Text('Exercise 5: Step Up and Down\n',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 30,
@@ -1225,19 +1205,10 @@ class _Exercise5State extends State<Exercise5> {
                                   color: Colors.red)),
                         ),
                         Image.asset("assets/images/stepUp.gif",
-                            width: 80, height: 350),
+                            width: 200, height: 300),
                         Container(
                           child: const Text(
-                              'Directions: 2 sets x 8 reps with 30s rest',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 22,
-                                  fontFamily: 'Lato',
-                                  color: Colors.black)),
-                        ),
-                        Container(
-                          child: const Text(
-                              'Use weighted vest for resistance\n',
+                              '\nSets: 2    Reps: 8    Rest: 30s\nResistance: Use weighted vest\nTempo: 2s going out 2s coming back\n',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 22,
@@ -1465,7 +1436,10 @@ class _Exercise6State extends State<Exercise6> {
                 builder: (context) => ListView(
                       children: <Widget>[
                         Container(
-                          child: const Text('\nExercise 6: Diagonal Reach',
+                          padding: EdgeInsets.only(bottom:10.0),
+                        ),
+                        Container(
+                          child: const Text('Exercise 6: Diagonal Reach\n',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 30,
@@ -1473,18 +1447,10 @@ class _Exercise6State extends State<Exercise6> {
                                   color: Colors.red)),
                         ),
                         Image.asset("assets/images/diagonalReach.gif",
-                            width: 80, height: 350),
+                            width: 200, height: 300),
                         Container(
                           child: const Text(
-                              'Directions: 2 sets x 8 reps with 30s rest',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 22,
-                                  fontFamily: 'Lato',
-                                  color: Colors.black)),
-                        ),
-                        Container(
-                          child: const Text('Use Theraband for resistance\n',
+                              '\nSets: 2    Reps: 8    Rest: 30s\nResistance: Use TheraBand\nTempo: 2s going out 2s coming back\n',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 22,
@@ -1713,7 +1679,10 @@ class _Exercise7State extends State<Exercise7> {
                 builder: (context) => ListView(
                       children: <Widget>[
                         Container(
-                          child: const Text('\nExercise 7: Calf Raises',
+                          padding: EdgeInsets.only(bottom:10.0),
+                        ),
+                        Container(
+                          child: const Text('Exercise 7: Calf Raises\n',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 30,
@@ -1721,19 +1690,10 @@ class _Exercise7State extends State<Exercise7> {
                                   color: Colors.red)),
                         ),
                         Image.asset("assets/images/calfRaises.gif",
-                            width: 80, height: 350),
+                            width: 200, height: 300),
                         Container(
                           child: const Text(
-                              'Directions: 2 sets x 12 reps with 30s rest',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 22,
-                                  fontFamily: 'Lato',
-                                  color: Colors.black)),
-                        ),
-                        Container(
-                          child: const Text(
-                              'Use weighted vest for resistance\n',
+                              '\nSets: 2    Reps: 12    Rest: 30s\nResistance: Use weighted vest\nTempo: 2s going out 2s coming back\n',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 22,
