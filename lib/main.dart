@@ -52,7 +52,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             Image.asset("assets/images/logo.png", width: 20, height: 70),
             Container(padding: const EdgeInsets.only(bottom: 60)),
             Container(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.fromLTRB(10, 10, 10, 7),
               child: TextField(
                 controller: nameController,
                 decoration: const InputDecoration(
@@ -62,7 +62,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               ),
             ),
             Container(
-              padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+              padding: const EdgeInsets.fromLTRB(10, 0, 10, 50),
               child: TextField(
                 obscureText: true,
                 controller: passwordController,
@@ -72,21 +72,16 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 ),
               ),
             ),
-            TextButton(
-              onPressed: () {
-                FirebaseAuth.instance
-                    .sendPasswordResetEmail(email: nameController.text);
-                //forgot password screen
-              },
-              child: const Text(
-                'Forgot Password',
-              ),
-            ),
+
+
             Container(
                 height: 50,
-                padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+                padding: const EdgeInsets.fromLTRB(100, 0, 100, 7),
                 child: ElevatedButton(
-                  child: const Text('Register'),
+                    style: ElevatedButton.styleFrom(
+                        primary:Colors.white,
+                        side: BorderSide(width: 1.0, color: Colors.red)),
+                  child: const Text('Sign Up', style: TextStyle(color:Colors.red, fontSize:20)),
                   onPressed: () {
                     print(nameController.text);
                     print(passwordController.text);
@@ -99,11 +94,12 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                             builder: (context) => new HomePage()));
                   },
                 )),
+
             Container(
                 height: 50,
-                padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+                padding: const EdgeInsets.fromLTRB(100, 0, 100, 5),
                 child: ElevatedButton(
-                  child: const Text('Login'),
+                  child: const Text('Login', style: TextStyle(fontSize:20)),
                   onPressed: () {
                     print(nameController.text);
                     print(passwordController.text);
@@ -116,6 +112,19 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                             builder: (context) => new HomePage()));
                   },
                 )),
+            Container(
+              padding: EdgeInsets.fromLTRB(110, 0, 100, 0),
+            child: TextButton(
+              onPressed: () {
+                FirebaseAuth.instance
+                    .sendPasswordResetEmail(email: nameController.text);
+                //forgot password screen
+              },
+              child: const Text(
+                'Forgot Password',
+                  style: TextStyle(fontSize:15)
+              ),
+            )),
           ],
         ));
   }
