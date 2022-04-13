@@ -146,32 +146,38 @@ class HomePage extends StatelessWidget {
               children: <Widget>[
                 Container(
                   padding: const EdgeInsets.all(10),
-                  color: Theme.of(context).backgroundColor,
-                  child: const Text('Welcome!',
+                  child: const Text('Welcome to myHipRehab!',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: 50, fontFamily: 'Lato', color: Colors.red)),
+                          fontSize: 35, fontFamily: 'LatoBold', color: Colors.red)),
                 ),
                 Container(
-                  child: const Text('\nNotes to remember:',
+                  child: const Text('\nBefore you begin, keep in mind: \n',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 22, fontFamily: 'LatoBoldItalic', color: Colors.red)),
+                ),
+                Container(
+                  padding: const EdgeInsets.all(10.0),
+                  child: const Text(
+                      '\u2022  Exercises should be performed 3 times a week at a similar time of day for 6 months.\n\n\u2022  Be sure to repeat exercises bilaterally (both legs, both arms, etc.).\n\n\u2022  Choose resistance based on maximum level that is comfortable.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: 30,
+                          fontSize: 18,
                           fontFamily: 'Lato',
                           color: Colors.black)),
                 ),
                 Container(
                   padding: const EdgeInsets.all(10.0),
-                  child: const Text(
-                      '\n1. Exercises should be performed 3 times a week at a similar time of day for 6 months.\n\n2. Be sure to repeat exercises bilaterally (both legs, both arms, etc.).\n\n3. Choose resistance based on maximum level that is comfortable.\n',
+                  child: const Text('Progression: Increase reps by 1 each week.\nAfter 8 weeks, add 1 set, and drop reps back to the original starting number stated in the following exercises.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: 23,
-                          fontFamily: 'Lato',
+                          fontSize: 18,
+                          fontFamily: 'LatoBold',
                           color: Colors.black)),
                 ),
                 Container(
-                  padding: const EdgeInsets.only(top: 20.0),
+                  padding: EdgeInsets.only(bottom:5.0),
                 ),
                 FractionallySizedBox(
                     widthFactor: 0.75,
@@ -184,7 +190,16 @@ class HomePage extends StatelessWidget {
                             new MaterialPageRoute(
                                 builder: (context) => new Exercise1()));
                       },
-                    ))
+                    )),
+                Container(
+                  padding: EdgeInsets.fromLTRB(10,5,0,10),
+                  child: const Text('\n*Program adapted from Lee 2020 - Postoperative Rehabilitation after Hip Fracture and Latham 2014 - Effect of a home-based exercise program on functional recovery following rehabilitation after hip fracture\n',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 10,
+                          fontFamily: 'LatoLight',
+                          color: Colors.black)),
+                ),
               ],
             ),
           ),
@@ -1942,20 +1957,7 @@ class _FinishState extends State<Finish> {
                                   fontFamily: 'Lato',
                                   color: Colors.black)),
                         ),
-                        Container(
-                          padding: const EdgeInsets.all(16.0),
-                          child: const Text(
-                              '\nProgram adapted from Lee 2020 - Postoperative Rehabilitation after Hip Fracture and Latham 2014 - Effect of a home-based exercise program on functional recovery following rehabilitation after hip fracture\n',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  fontFamily: 'Lato',
-                                  fontStyle: FontStyle.italic,
-                                  color: Colors.black)),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.only(top: 50),
-                        ),
+
                         FractionallySizedBox(
                             widthFactor: 0.5,
                             child: ElevatedButton(
