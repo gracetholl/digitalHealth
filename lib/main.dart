@@ -6,6 +6,8 @@ import 'dart:ui';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../camera_page.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -264,6 +266,16 @@ class _Exercise1State extends State<Exercise1> {
                         FractionallySizedBox(
                             widthFactor: 0.50,
                             child: ElevatedButton(
+                              child: const Text('Record Video', style: const TextStyle(fontSize: 18)),
+                              onPressed: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => const CameraPage()));
+                              },
+                            )
+                        ),
+
+                        FractionallySizedBox(
+                            widthFactor: 0.50,
+                            child: ElevatedButton(
                               child: const Text('Next Exercise',
                                   style: const TextStyle(fontSize: 18)),
                               onPressed: () {
@@ -503,6 +515,17 @@ class _Exercise2State extends State<Exercise2> {
                                   fontFamily: 'Lato',
                                   color: Colors.black)),
                         ),
+
+                        FractionallySizedBox(
+                            widthFactor: 0.50,
+                            child: ElevatedButton(
+                              child: const Text('Record Video', style: const TextStyle(fontSize: 18)),
+                              onPressed: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => const CameraPage()));
+                              },
+                            )
+                        ),
+
                         FractionallySizedBox(
                             widthFactor: 0.50,
                             child: ElevatedButton(
@@ -746,6 +769,17 @@ class _Exercise3State extends State<Exercise3> {
                                   fontFamily: 'Lato',
                                   color: Colors.black)),
                         ),
+
+                        FractionallySizedBox(
+                            widthFactor: 0.50,
+                            child: ElevatedButton(
+                              child: const Text('Record Video', style: const TextStyle(fontSize: 18)),
+                              onPressed: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => const CameraPage()));
+                              },
+                            )
+                        ),
+
                         FractionallySizedBox(
                             widthFactor: 0.50,
                             child: ElevatedButton(
@@ -988,6 +1022,17 @@ class _Exercise4State extends State<Exercise4> {
                                   fontFamily: 'Lato',
                                   color: Colors.black)),
                         ),
+
+                        FractionallySizedBox(
+                            widthFactor: 0.50,
+                            child: ElevatedButton(
+                              child: const Text('Record Video', style: const TextStyle(fontSize: 18)),
+                              onPressed: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => const CameraPage()));
+                              },
+                            )
+                        ),
+
                         FractionallySizedBox(
                             widthFactor: 0.50,
                             child: ElevatedButton(
@@ -1230,6 +1275,17 @@ class _Exercise5State extends State<Exercise5> {
                                   fontFamily: 'Lato',
                                   color: Colors.black)),
                         ),
+
+                        FractionallySizedBox(
+                            widthFactor: 0.50,
+                            child: ElevatedButton(
+                              child: const Text('Record Video', style: const TextStyle(fontSize: 18)),
+                              onPressed: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => const CameraPage()));
+                              },
+                            )
+                        ),
+
                         FractionallySizedBox(
                             widthFactor: 0.50,
                             child: ElevatedButton(
@@ -1472,6 +1528,17 @@ class _Exercise6State extends State<Exercise6> {
                                   fontFamily: 'Lato',
                                   color: Colors.black)),
                         ),
+
+                        FractionallySizedBox(
+                            widthFactor: 0.50,
+                            child: ElevatedButton(
+                              child: const Text('Record Video', style: const TextStyle(fontSize: 18)),
+                              onPressed: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => const CameraPage()));
+                              },
+                            )
+                        ),
+
                         FractionallySizedBox(
                             widthFactor: 0.50,
                             child: ElevatedButton(
@@ -1715,6 +1782,17 @@ class _Exercise7State extends State<Exercise7> {
                                   fontFamily: 'Lato',
                                   color: Colors.black)),
                         ),
+
+                        FractionallySizedBox(
+                            widthFactor: 0.50,
+                            child: ElevatedButton(
+                              child: const Text('Record Video', style: const TextStyle(fontSize: 18)),
+                              onPressed: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => const CameraPage()));
+                              },
+                            )
+                        ),
+
                         FractionallySizedBox(
                             widthFactor: 0.50,
                             child: ElevatedButton(
