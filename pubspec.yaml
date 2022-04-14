@@ -40,6 +40,7 @@ dependencies:
   cloud_firestore: ^3.1.11
   provider: ^6.0.2
   flutter_camera: ^0.1.1
+  confetti: ^0.6.0
 
 dev_dependencies:
   flutter_test:
@@ -74,6 +75,7 @@ flutter:
     - assets/images/tricepsExtension.gif
     - assets/images/happyFace.png
     - assets/images/sadFace.png
+    - assets/images/trophy1.png
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

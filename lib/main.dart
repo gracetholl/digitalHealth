@@ -7,7 +7,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../camera_page.dart';
-
+import 'package:confetti/confetti.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -74,16 +74,15 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 ),
               ),
             ),
-
-
             Container(
                 height: 50,
                 padding: const EdgeInsets.fromLTRB(100, 0, 100, 7),
                 child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary:Colors.white,
-                        side: BorderSide(width: 1.0, color: Colors.red)),
-                  child: const Text('Sign Up', style: TextStyle(color:Colors.red, fontSize:20)),
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                      side: BorderSide(width: 1.0, color: Colors.red)),
+                  child: const Text('Sign Up',
+                      style: TextStyle(color: Colors.red, fontSize: 20)),
                   onPressed: () {
                     print(nameController.text);
                     print(passwordController.text);
@@ -96,12 +95,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                             builder: (context) => new HomePage()));
                   },
                 )),
-
             Container(
                 height: 50,
                 padding: const EdgeInsets.fromLTRB(100, 0, 100, 5),
                 child: ElevatedButton(
-                  child: const Text('Login', style: TextStyle(fontSize:20)),
+                  child: const Text('Login', style: TextStyle(fontSize: 20)),
                   onPressed: () {
                     print(nameController.text);
                     print(passwordController.text);
@@ -115,18 +113,16 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   },
                 )),
             Container(
-              padding: EdgeInsets.fromLTRB(110, 0, 100, 0),
-            child: TextButton(
-              onPressed: () {
-                FirebaseAuth.instance
-                    .sendPasswordResetEmail(email: nameController.text);
-                //forgot password screen
-              },
-              child: const Text(
-                'Forgot Password',
-                  style: TextStyle(fontSize:15)
-              ),
-            )),
+                padding: EdgeInsets.fromLTRB(110, 0, 100, 0),
+                child: TextButton(
+                  onPressed: () {
+                    FirebaseAuth.instance
+                        .sendPasswordResetEmail(email: nameController.text);
+                    //forgot password screen
+                  },
+                  child: const Text('Forgot Password',
+                      style: TextStyle(fontSize: 15)),
+                )),
           ],
         ));
   }
@@ -151,13 +147,17 @@ class HomePage extends StatelessWidget {
                   child: const Text('Welcome to myHipRehab!',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: 35, fontFamily: 'LatoBold', color: Colors.red)),
+                          fontSize: 35,
+                          fontFamily: 'LatoBold',
+                          color: Colors.red)),
                 ),
                 Container(
                   child: const Text('\nBefore you begin, keep in mind: \n',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 22, fontFamily: 'LatoBoldItalic', color: Colors.red)),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 22,
+                          fontFamily: 'LatoBoldItalic',
+                          color: Colors.red)),
                 ),
                 Container(
                   padding: const EdgeInsets.all(10.0),
@@ -171,7 +171,8 @@ class HomePage extends StatelessWidget {
                 ),
                 Container(
                   padding: const EdgeInsets.all(10.0),
-                  child: const Text('Progression: Increase reps by 1 each week.\nAfter 8 weeks, add 1 set, and drop reps back to the original starting number stated in the following exercises.',
+                  child: const Text(
+                      'Progression: Increase reps by 1 each week.\nAfter 8 weeks, add 1 set, and drop reps back to the original starting number stated in the following exercises.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 18,
@@ -179,7 +180,7 @@ class HomePage extends StatelessWidget {
                           color: Colors.black)),
                 ),
                 Container(
-                  padding: EdgeInsets.only(bottom:5.0),
+                  padding: EdgeInsets.only(bottom: 5.0),
                 ),
                 FractionallySizedBox(
                     widthFactor: 0.75,
@@ -194,8 +195,9 @@ class HomePage extends StatelessWidget {
                       },
                     )),
                 Container(
-                  padding: EdgeInsets.fromLTRB(10,5,0,10),
-                  child: const Text('\n*Program adapted from Lee 2020 - Postoperative Rehabilitation after Hip Fracture and Latham 2014 - Effect of a home-based exercise program on functional recovery following rehabilitation after hip fracture\n',
+                  padding: EdgeInsets.fromLTRB(10, 5, 0, 10),
+                  child: const Text(
+                      '\n*Program adapted from Lee 2020 - Postoperative Rehabilitation after Hip Fracture and Latham 2014 - Effect of a home-based exercise program on functional recovery following rehabilitation after hip fracture\n',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 10,
@@ -241,7 +243,7 @@ class _Exercise1State extends State<Exercise1> {
                 builder: (context) => ListView(
                       children: <Widget>[
                         Container(
-                          padding: EdgeInsets.only(bottom:10.0),
+                          padding: EdgeInsets.only(bottom: 10.0),
                         ),
                         Container(
                           child: const Text('Exercise 1: Hip Extensions\n',
@@ -263,28 +265,32 @@ class _Exercise1State extends State<Exercise1> {
                                   color: Colors.black)),
                         ),
                         Container(
-                          padding: EdgeInsets.only(bottom:20.0),
+                          padding: EdgeInsets.only(bottom: 20.0),
                         ),
-                        Row(
-                          children: <Widget>[
+                        Row(children: <Widget>[
                           Expanded(
-                          child: Container(
-                              padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    primary:Colors.white,
-                                    side: BorderSide(width: 1.0, color: Colors.red)),
-                                child: const Text('Record Video', style: const TextStyle(fontSize: 18, color: Colors.red)),
-                                onPressed: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => const CameraPage()));
-                                },
-                              )
-                          ),
-                          ),
-                          Expanded(
-                            child:  Container(
+                            child: Container(
                                 padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-
+                                child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      primary: Colors.white,
+                                      side: BorderSide(
+                                          width: 1.0, color: Colors.red)),
+                                  child: const Text('Record Video',
+                                      style: const TextStyle(
+                                          fontSize: 18, color: Colors.red)),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const CameraPage()));
+                                  },
+                                )),
+                          ),
+                          Expanded(
+                            child: Container(
+                                padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                                 child: ElevatedButton(
                                   child: const Text('Next Exercise',
                                       style: const TextStyle(fontSize: 18)),
@@ -297,14 +303,15 @@ class _Exercise1State extends State<Exercise1> {
                                             style: TextStyle(fontSize: 16)),
                                         content: StatefulBuilder(builder:
                                             (BuildContext context,
-                                            StateSetter setState) {
+                                                StateSetter setState) {
                                           return Column(
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
                                                 ListTile(
-                                                    visualDensity: VisualDensity(
-                                                        horizontal: 0,
-                                                        vertical: -4),
+                                                    visualDensity:
+                                                        VisualDensity(
+                                                            horizontal: 0,
+                                                            vertical: -4),
                                                     title: Text("0    None"),
                                                     leading: Radio<int>(
                                                         value: 0,
@@ -317,9 +324,10 @@ class _Exercise1State extends State<Exercise1> {
                                                     trailing: Image.asset(
                                                         "assets/images/happyFace.png")),
                                                 ListTile(
-                                                    visualDensity: VisualDensity(
-                                                        horizontal: 0,
-                                                        vertical: -4),
+                                                    visualDensity:
+                                                        VisualDensity(
+                                                            horizontal: 0,
+                                                            vertical: -4),
                                                     title: Text("1"),
                                                     leading: Radio<int>(
                                                         value: 1,
@@ -330,9 +338,10 @@ class _Exercise1State extends State<Exercise1> {
                                                           });
                                                         })),
                                                 ListTile(
-                                                    visualDensity: VisualDensity(
-                                                        horizontal: 0,
-                                                        vertical: -4),
+                                                    visualDensity:
+                                                        VisualDensity(
+                                                            horizontal: 0,
+                                                            vertical: -4),
                                                     title: Text("2"),
                                                     leading: Radio<int>(
                                                         value: 2,
@@ -343,9 +352,10 @@ class _Exercise1State extends State<Exercise1> {
                                                           });
                                                         })),
                                                 ListTile(
-                                                    visualDensity: VisualDensity(
-                                                        horizontal: 0,
-                                                        vertical: -4),
+                                                    visualDensity:
+                                                        VisualDensity(
+                                                            horizontal: 0,
+                                                            vertical: -4),
                                                     title: Text("3"),
                                                     leading: Radio<int>(
                                                         value: 3,
@@ -356,9 +366,10 @@ class _Exercise1State extends State<Exercise1> {
                                                           });
                                                         })),
                                                 ListTile(
-                                                    visualDensity: VisualDensity(
-                                                        horizontal: 0,
-                                                        vertical: -4),
+                                                    visualDensity:
+                                                        VisualDensity(
+                                                            horizontal: 0,
+                                                            vertical: -4),
                                                     title: Text("4"),
                                                     leading: Radio<int>(
                                                         value: 4,
@@ -369,9 +380,10 @@ class _Exercise1State extends State<Exercise1> {
                                                           });
                                                         })),
                                                 ListTile(
-                                                    visualDensity: VisualDensity(
-                                                        horizontal: 0,
-                                                        vertical: -4),
+                                                    visualDensity:
+                                                        VisualDensity(
+                                                            horizontal: 0,
+                                                            vertical: -4),
                                                     title: Text("5"),
                                                     leading: Radio<int>(
                                                         value: 5,
@@ -382,9 +394,10 @@ class _Exercise1State extends State<Exercise1> {
                                                           });
                                                         })),
                                                 ListTile(
-                                                    visualDensity: VisualDensity(
-                                                        horizontal: 0,
-                                                        vertical: -4),
+                                                    visualDensity:
+                                                        VisualDensity(
+                                                            horizontal: 0,
+                                                            vertical: -4),
                                                     title: Text("6"),
                                                     leading: Radio<int>(
                                                         value: 6,
@@ -395,9 +408,10 @@ class _Exercise1State extends State<Exercise1> {
                                                           });
                                                         })),
                                                 ListTile(
-                                                    visualDensity: VisualDensity(
-                                                        horizontal: 0,
-                                                        vertical: -4),
+                                                    visualDensity:
+                                                        VisualDensity(
+                                                            horizontal: 0,
+                                                            vertical: -4),
                                                     title: Text("7"),
                                                     leading: Radio<int>(
                                                         value: 7,
@@ -408,9 +422,10 @@ class _Exercise1State extends State<Exercise1> {
                                                           });
                                                         })),
                                                 ListTile(
-                                                    visualDensity: VisualDensity(
-                                                        horizontal: 0,
-                                                        vertical: -4),
+                                                    visualDensity:
+                                                        VisualDensity(
+                                                            horizontal: 0,
+                                                            vertical: -4),
                                                     title: Text("8"),
                                                     leading: Radio<int>(
                                                         value: 8,
@@ -421,9 +436,10 @@ class _Exercise1State extends State<Exercise1> {
                                                           });
                                                         })),
                                                 ListTile(
-                                                    visualDensity: VisualDensity(
-                                                        horizontal: 0,
-                                                        vertical: -4),
+                                                    visualDensity:
+                                                        VisualDensity(
+                                                            horizontal: 0,
+                                                            vertical: -4),
                                                     title: Text("9"),
                                                     leading: Radio<int>(
                                                         value: 9,
@@ -434,10 +450,12 @@ class _Exercise1State extends State<Exercise1> {
                                                           });
                                                         })),
                                                 ListTile(
-                                                    visualDensity: VisualDensity(
-                                                        horizontal: 0,
-                                                        vertical: -4),
-                                                    title: Text("10  Very Severe"),
+                                                    visualDensity:
+                                                        VisualDensity(
+                                                            horizontal: 0,
+                                                            vertical: -4),
+                                                    title:
+                                                        Text("10  Very Severe"),
                                                     leading: Radio<int>(
                                                         value: 10,
                                                         groupValue: val,
@@ -453,24 +471,20 @@ class _Exercise1State extends State<Exercise1> {
                                         actions: <Widget>[
                                           TextButton(
                                               child: Text('Submit',
-                                                  style: TextStyle(fontSize: 19)),
+                                                  style:
+                                                      TextStyle(fontSize: 19)),
                                               onPressed: () => Navigator.push(
                                                   context,
                                                   new MaterialPageRoute(
                                                       builder: (context) =>
-                                                      new Exercise2()))),
+                                                          new Exercise2()))),
                                         ],
                                       ),
                                     );
                                   },
                                 )),
                           ),
-
-                          ]
-                        ),
-
-
-
+                        ]),
                         Container(
                           padding: const EdgeInsets.all(16.0),
                           child: const LinearProgressIndicator(
@@ -511,7 +525,7 @@ class _Exercise2State extends State<Exercise2> {
                 builder: (context) => ListView(
                       children: <Widget>[
                         Container(
-                          padding: EdgeInsets.only(bottom:10.0),
+                          padding: EdgeInsets.only(bottom: 10.0),
                         ),
                         Container(
                           child: const Text('Exercise 2: Tricep Extensions\n',
@@ -533,213 +547,228 @@ class _Exercise2State extends State<Exercise2> {
                                   color: Colors.black)),
                         ),
                         Container(
-                          padding: EdgeInsets.only(bottom:15.0),
+                          padding: EdgeInsets.only(bottom: 15.0),
                         ),
-                        Row(
-                            children: <Widget>[
-                              Expanded(
-                                child: Container(
-                                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                                    child: ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                          primary:Colors.white,
-                                          side: BorderSide(width: 1.0, color: Colors.red)),
-                                      child: const Text('Record Video', style: const TextStyle(fontSize: 18, color: Colors.red)),
-                                      onPressed: () {
-                                        Navigator.push(context, MaterialPageRoute(builder: (context) => const CameraPage()));
-                                      },
-                                    )
-                                ),
-                              ),
-                              Expanded(
-                                child:  Container(
-                                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-
-                                    child: ElevatedButton(
-                                      child: const Text('Next Exercise',
-                                          style: const TextStyle(fontSize: 18)),
-                                      onPressed: () {
-                                        showDialog(
-                                          context: context,
-                                          builder: (context) => AlertDialog(
-                                            title: Text(
-                                                'Did you experience any pain during this exercise?',
-                                                style: TextStyle(fontSize: 16)),
-                                            content: StatefulBuilder(builder:
-                                                (BuildContext context,
+                        Row(children: <Widget>[
+                          Expanded(
+                            child: Container(
+                                padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      primary: Colors.white,
+                                      side: BorderSide(
+                                          width: 1.0, color: Colors.red)),
+                                  child: const Text('Record Video',
+                                      style: const TextStyle(
+                                          fontSize: 18, color: Colors.red)),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const CameraPage()));
+                                  },
+                                )),
+                          ),
+                          Expanded(
+                            child: Container(
+                                padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                child: ElevatedButton(
+                                  child: const Text('Next Exercise',
+                                      style: const TextStyle(fontSize: 18)),
+                                  onPressed: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (context) => AlertDialog(
+                                        title: Text(
+                                            'Did you experience any pain during this exercise?',
+                                            style: TextStyle(fontSize: 16)),
+                                        content: StatefulBuilder(builder:
+                                            (BuildContext context,
                                                 StateSetter setState) {
-                                              return Column(
-                                                  mainAxisSize: MainAxisSize.min,
-                                                  children: [
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                          return Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("0    None"),
-                                                        leading: Radio<int>(
-                                                            value: 0,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 0;
-                                                              });
-                                                            }),
-                                                        trailing: Image.asset(
-                                                            "assets/images/happyFace.png")),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("0    None"),
+                                                    leading: Radio<int>(
+                                                        value: 0,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 0;
+                                                          });
+                                                        }),
+                                                    trailing: Image.asset(
+                                                        "assets/images/happyFace.png")),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("1"),
-                                                        leading: Radio<int>(
-                                                            value: 1,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 1;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("1"),
+                                                    leading: Radio<int>(
+                                                        value: 1,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 1;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("2"),
-                                                        leading: Radio<int>(
-                                                            value: 2,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 2;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("2"),
+                                                    leading: Radio<int>(
+                                                        value: 2,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 2;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("3"),
-                                                        leading: Radio<int>(
-                                                            value: 3,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 3;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("3"),
+                                                    leading: Radio<int>(
+                                                        value: 3,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 3;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("4"),
-                                                        leading: Radio<int>(
-                                                            value: 4,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 4;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("4"),
+                                                    leading: Radio<int>(
+                                                        value: 4,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 4;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("5"),
-                                                        leading: Radio<int>(
-                                                            value: 5,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 5;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("5"),
+                                                    leading: Radio<int>(
+                                                        value: 5,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 5;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("6"),
-                                                        leading: Radio<int>(
-                                                            value: 6,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 6;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("6"),
+                                                    leading: Radio<int>(
+                                                        value: 6,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 6;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("7"),
-                                                        leading: Radio<int>(
-                                                            value: 7,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 7;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("7"),
+                                                    leading: Radio<int>(
+                                                        value: 7,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 7;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("8"),
-                                                        leading: Radio<int>(
-                                                            value: 8,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 8;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("8"),
+                                                    leading: Radio<int>(
+                                                        value: 8,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 8;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("9"),
-                                                        leading: Radio<int>(
-                                                            value: 9,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 9;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("9"),
+                                                    leading: Radio<int>(
+                                                        value: 9,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 9;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("10  Very Severe"),
-                                                        leading: Radio<int>(
-                                                            value: 10,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 10;
-                                                              });
-                                                            }),
-                                                        trailing: Image.asset(
-                                                            "assets/images/sadFace.png")),
-                                                  ]);
-                                            }),
-                                            actions: <Widget>[
-                                              TextButton(
-                                                  child: Text('Submit',
-                                                      style: TextStyle(fontSize: 19)),
-                                                  onPressed: () => Navigator.push(
-                                                      context,
-                                                      new MaterialPageRoute(
-                                                          builder: (context) =>
+                                                    title:
+                                                        Text("10  Very Severe"),
+                                                    leading: Radio<int>(
+                                                        value: 10,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 10;
+                                                          });
+                                                        }),
+                                                    trailing: Image.asset(
+                                                        "assets/images/sadFace.png")),
+                                              ]);
+                                        }),
+                                        actions: <Widget>[
+                                          TextButton(
+                                              child: Text('Submit',
+                                                  style:
+                                                      TextStyle(fontSize: 19)),
+                                              onPressed: () => Navigator.push(
+                                                  context,
+                                                  new MaterialPageRoute(
+                                                      builder: (context) =>
                                                           new Exercise3()))),
-                                            ],
-                                          ),
-                                        );
-                                      },
-                                    )),
-                              ),
-
-                            ]
-                        ),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                )),
+                          ),
+                        ]),
                         Container(
-                          padding: EdgeInsets.only(bottom:5.0),
+                          padding: EdgeInsets.only(bottom: 5.0),
                         ),
                         Container(
                           padding: const EdgeInsets.all(16.0),
@@ -782,7 +811,7 @@ class _Exercise3State extends State<Exercise3> {
                 builder: (context) => ListView(
                       children: <Widget>[
                         Container(
-                          padding: EdgeInsets.only(bottom:10.0),
+                          padding: EdgeInsets.only(bottom: 10.0),
                         ),
                         Container(
                           child: const Text('Exercise 3: Chair Squats\n',
@@ -804,213 +833,228 @@ class _Exercise3State extends State<Exercise3> {
                                   color: Colors.black)),
                         ),
                         Container(
-                          padding: EdgeInsets.only(bottom:15.0),
+                          padding: EdgeInsets.only(bottom: 15.0),
                         ),
-                        Row(
-                            children: <Widget>[
-                              Expanded(
-                                child: Container(
-                                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                                    child: ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                          primary:Colors.white,
-                                          side: BorderSide(width: 1.0, color: Colors.red)),
-                                      child: const Text('Record Video', style: const TextStyle(fontSize: 18, color: Colors.red)),
-                                      onPressed: () {
-                                        Navigator.push(context, MaterialPageRoute(builder: (context) => const CameraPage()));
-                                      },
-                                    )
-                                ),
-                              ),
-                              Expanded(
-                                child:  Container(
-                                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-
-                                    child: ElevatedButton(
-                                      child: const Text('Next Exercise',
-                                          style: const TextStyle(fontSize: 18)),
-                                      onPressed: () {
-                                        showDialog(
-                                          context: context,
-                                          builder: (context) => AlertDialog(
-                                            title: Text(
-                                                'Did you experience any pain during this exercise?',
-                                                style: TextStyle(fontSize: 16)),
-                                            content: StatefulBuilder(builder:
-                                                (BuildContext context,
+                        Row(children: <Widget>[
+                          Expanded(
+                            child: Container(
+                                padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      primary: Colors.white,
+                                      side: BorderSide(
+                                          width: 1.0, color: Colors.red)),
+                                  child: const Text('Record Video',
+                                      style: const TextStyle(
+                                          fontSize: 18, color: Colors.red)),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const CameraPage()));
+                                  },
+                                )),
+                          ),
+                          Expanded(
+                            child: Container(
+                                padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                child: ElevatedButton(
+                                  child: const Text('Next Exercise',
+                                      style: const TextStyle(fontSize: 18)),
+                                  onPressed: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (context) => AlertDialog(
+                                        title: Text(
+                                            'Did you experience any pain during this exercise?',
+                                            style: TextStyle(fontSize: 16)),
+                                        content: StatefulBuilder(builder:
+                                            (BuildContext context,
                                                 StateSetter setState) {
-                                              return Column(
-                                                  mainAxisSize: MainAxisSize.min,
-                                                  children: [
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                          return Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("0    None"),
-                                                        leading: Radio<int>(
-                                                            value: 0,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 0;
-                                                              });
-                                                            }),
-                                                        trailing: Image.asset(
-                                                            "assets/images/happyFace.png")),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("0    None"),
+                                                    leading: Radio<int>(
+                                                        value: 0,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 0;
+                                                          });
+                                                        }),
+                                                    trailing: Image.asset(
+                                                        "assets/images/happyFace.png")),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("1"),
-                                                        leading: Radio<int>(
-                                                            value: 1,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 1;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("1"),
+                                                    leading: Radio<int>(
+                                                        value: 1,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 1;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("2"),
-                                                        leading: Radio<int>(
-                                                            value: 2,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 2;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("2"),
+                                                    leading: Radio<int>(
+                                                        value: 2,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 2;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("3"),
-                                                        leading: Radio<int>(
-                                                            value: 3,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 3;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("3"),
+                                                    leading: Radio<int>(
+                                                        value: 3,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 3;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("4"),
-                                                        leading: Radio<int>(
-                                                            value: 4,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 4;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("4"),
+                                                    leading: Radio<int>(
+                                                        value: 4,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 4;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("5"),
-                                                        leading: Radio<int>(
-                                                            value: 5,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 5;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("5"),
+                                                    leading: Radio<int>(
+                                                        value: 5,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 5;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("6"),
-                                                        leading: Radio<int>(
-                                                            value: 6,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 6;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("6"),
+                                                    leading: Radio<int>(
+                                                        value: 6,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 6;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("7"),
-                                                        leading: Radio<int>(
-                                                            value: 7,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 7;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("7"),
+                                                    leading: Radio<int>(
+                                                        value: 7,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 7;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("8"),
-                                                        leading: Radio<int>(
-                                                            value: 8,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 8;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("8"),
+                                                    leading: Radio<int>(
+                                                        value: 8,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 8;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("9"),
-                                                        leading: Radio<int>(
-                                                            value: 9,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 9;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("9"),
+                                                    leading: Radio<int>(
+                                                        value: 9,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 9;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("10  Very Severe"),
-                                                        leading: Radio<int>(
-                                                            value: 10,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 10;
-                                                              });
-                                                            }),
-                                                        trailing: Image.asset(
-                                                            "assets/images/sadFace.png")),
-                                                  ]);
-                                            }),
-                                            actions: <Widget>[
-                                              TextButton(
-                                                  child: Text('Submit',
-                                                      style: TextStyle(fontSize: 19)),
-                                                  onPressed: () => Navigator.push(
-                                                      context,
-                                                      new MaterialPageRoute(
-                                                          builder: (context) =>
+                                                    title:
+                                                        Text("10  Very Severe"),
+                                                    leading: Radio<int>(
+                                                        value: 10,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 10;
+                                                          });
+                                                        }),
+                                                    trailing: Image.asset(
+                                                        "assets/images/sadFace.png")),
+                                              ]);
+                                        }),
+                                        actions: <Widget>[
+                                          TextButton(
+                                              child: Text('Submit',
+                                                  style:
+                                                      TextStyle(fontSize: 19)),
+                                              onPressed: () => Navigator.push(
+                                                  context,
+                                                  new MaterialPageRoute(
+                                                      builder: (context) =>
                                                           new Exercise4()))),
-                                            ],
-                                          ),
-                                        );
-                                      },
-                                    )),
-                              ),
-
-                            ]
-                        ),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                )),
+                          ),
+                        ]),
                         Container(
-                          padding: EdgeInsets.only(bottom:5.0),
+                          padding: EdgeInsets.only(bottom: 5.0),
                         ),
                         Container(
                           padding: const EdgeInsets.all(16.0),
@@ -1052,7 +1096,7 @@ class _Exercise4State extends State<Exercise4> {
                 builder: (context) => ListView(
                       children: <Widget>[
                         Container(
-                          padding: EdgeInsets.only(bottom:10.0),
+                          padding: EdgeInsets.only(bottom: 10.0),
                         ),
                         Container(
                           child: const Text('Exercise 4: Double Arm Lift\n',
@@ -1074,213 +1118,228 @@ class _Exercise4State extends State<Exercise4> {
                                   color: Colors.black)),
                         ),
                         Container(
-                          padding: EdgeInsets.only(bottom:15.0),
+                          padding: EdgeInsets.only(bottom: 15.0),
                         ),
-                        Row(
-                            children: <Widget>[
-                              Expanded(
-                                child: Container(
-                                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                                    child: ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                          primary:Colors.white,
-                                          side: BorderSide(width: 1.0, color: Colors.red)),
-                                      child: const Text('Record Video', style: const TextStyle(fontSize: 18, color: Colors.red)),
-                                      onPressed: () {
-                                        Navigator.push(context, MaterialPageRoute(builder: (context) => const CameraPage()));
-                                      },
-                                    )
-                                ),
-                              ),
-                              Expanded(
-                                child:  Container(
-                                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-
-                                    child: ElevatedButton(
-                                      child: const Text('Next Exercise',
-                                          style: const TextStyle(fontSize: 18)),
-                                      onPressed: () {
-                                        showDialog(
-                                          context: context,
-                                          builder: (context) => AlertDialog(
-                                            title: Text(
-                                                'Did you experience any pain during this exercise?',
-                                                style: TextStyle(fontSize: 16)),
-                                            content: StatefulBuilder(builder:
-                                                (BuildContext context,
+                        Row(children: <Widget>[
+                          Expanded(
+                            child: Container(
+                                padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      primary: Colors.white,
+                                      side: BorderSide(
+                                          width: 1.0, color: Colors.red)),
+                                  child: const Text('Record Video',
+                                      style: const TextStyle(
+                                          fontSize: 18, color: Colors.red)),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const CameraPage()));
+                                  },
+                                )),
+                          ),
+                          Expanded(
+                            child: Container(
+                                padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                child: ElevatedButton(
+                                  child: const Text('Next Exercise',
+                                      style: const TextStyle(fontSize: 18)),
+                                  onPressed: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (context) => AlertDialog(
+                                        title: Text(
+                                            'Did you experience any pain during this exercise?',
+                                            style: TextStyle(fontSize: 16)),
+                                        content: StatefulBuilder(builder:
+                                            (BuildContext context,
                                                 StateSetter setState) {
-                                              return Column(
-                                                  mainAxisSize: MainAxisSize.min,
-                                                  children: [
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                          return Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("0    None"),
-                                                        leading: Radio<int>(
-                                                            value: 0,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 0;
-                                                              });
-                                                            }),
-                                                        trailing: Image.asset(
-                                                            "assets/images/happyFace.png")),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("0    None"),
+                                                    leading: Radio<int>(
+                                                        value: 0,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 0;
+                                                          });
+                                                        }),
+                                                    trailing: Image.asset(
+                                                        "assets/images/happyFace.png")),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("1"),
-                                                        leading: Radio<int>(
-                                                            value: 1,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 1;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("1"),
+                                                    leading: Radio<int>(
+                                                        value: 1,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 1;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("2"),
-                                                        leading: Radio<int>(
-                                                            value: 2,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 2;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("2"),
+                                                    leading: Radio<int>(
+                                                        value: 2,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 2;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("3"),
-                                                        leading: Radio<int>(
-                                                            value: 3,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 3;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("3"),
+                                                    leading: Radio<int>(
+                                                        value: 3,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 3;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("4"),
-                                                        leading: Radio<int>(
-                                                            value: 4,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 4;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("4"),
+                                                    leading: Radio<int>(
+                                                        value: 4,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 4;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("5"),
-                                                        leading: Radio<int>(
-                                                            value: 5,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 5;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("5"),
+                                                    leading: Radio<int>(
+                                                        value: 5,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 5;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("6"),
-                                                        leading: Radio<int>(
-                                                            value: 6,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 6;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("6"),
+                                                    leading: Radio<int>(
+                                                        value: 6,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 6;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("7"),
-                                                        leading: Radio<int>(
-                                                            value: 7,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 7;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("7"),
+                                                    leading: Radio<int>(
+                                                        value: 7,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 7;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("8"),
-                                                        leading: Radio<int>(
-                                                            value: 8,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 8;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("8"),
+                                                    leading: Radio<int>(
+                                                        value: 8,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 8;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("9"),
-                                                        leading: Radio<int>(
-                                                            value: 9,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 9;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("9"),
+                                                    leading: Radio<int>(
+                                                        value: 9,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 9;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("10  Very Severe"),
-                                                        leading: Radio<int>(
-                                                            value: 10,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 10;
-                                                              });
-                                                            }),
-                                                        trailing: Image.asset(
-                                                            "assets/images/sadFace.png")),
-                                                  ]);
-                                            }),
-                                            actions: <Widget>[
-                                              TextButton(
-                                                  child: Text('Submit',
-                                                      style: TextStyle(fontSize: 19)),
-                                                  onPressed: () => Navigator.push(
-                                                      context,
-                                                      new MaterialPageRoute(
-                                                          builder: (context) =>
+                                                    title:
+                                                        Text("10  Very Severe"),
+                                                    leading: Radio<int>(
+                                                        value: 10,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 10;
+                                                          });
+                                                        }),
+                                                    trailing: Image.asset(
+                                                        "assets/images/sadFace.png")),
+                                              ]);
+                                        }),
+                                        actions: <Widget>[
+                                          TextButton(
+                                              child: Text('Submit',
+                                                  style:
+                                                      TextStyle(fontSize: 19)),
+                                              onPressed: () => Navigator.push(
+                                                  context,
+                                                  new MaterialPageRoute(
+                                                      builder: (context) =>
                                                           new Exercise5()))),
-                                            ],
-                                          ),
-                                        );
-                                      },
-                                    )),
-                              ),
-
-                            ]
-                        ),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                )),
+                          ),
+                        ]),
                         Container(
-                          padding: EdgeInsets.only(bottom:5.0),
+                          padding: EdgeInsets.only(bottom: 5.0),
                         ),
                         Container(
                           padding: const EdgeInsets.all(16.0),
@@ -1322,7 +1381,7 @@ class _Exercise5State extends State<Exercise5> {
                 builder: (context) => ListView(
                       children: <Widget>[
                         Container(
-                          padding: EdgeInsets.only(bottom:10.0),
+                          padding: EdgeInsets.only(bottom: 10.0),
                         ),
                         Container(
                           child: const Text('Exercise 5: Step Up and Down\n',
@@ -1344,213 +1403,228 @@ class _Exercise5State extends State<Exercise5> {
                                   color: Colors.black)),
                         ),
                         Container(
-                          padding: EdgeInsets.only(bottom:15.0),
+                          padding: EdgeInsets.only(bottom: 15.0),
                         ),
-                        Row(
-                            children: <Widget>[
-                              Expanded(
-                                child: Container(
-                                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                                    child: ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                          primary:Colors.white,
-                                          side: BorderSide(width: 1.0, color: Colors.red)),
-                                      child: const Text('Record Video', style: const TextStyle(fontSize: 18, color: Colors.red)),
-                                      onPressed: () {
-                                        Navigator.push(context, MaterialPageRoute(builder: (context) => const CameraPage()));
-                                      },
-                                    )
-                                ),
-                              ),
-                              Expanded(
-                                child:  Container(
-                                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-
-                                    child: ElevatedButton(
-                                      child: const Text('Next Exercise',
-                                          style: const TextStyle(fontSize: 18)),
-                                      onPressed: () {
-                                        showDialog(
-                                          context: context,
-                                          builder: (context) => AlertDialog(
-                                            title: Text(
-                                                'Did you experience any pain during this exercise?',
-                                                style: TextStyle(fontSize: 16)),
-                                            content: StatefulBuilder(builder:
-                                                (BuildContext context,
+                        Row(children: <Widget>[
+                          Expanded(
+                            child: Container(
+                                padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      primary: Colors.white,
+                                      side: BorderSide(
+                                          width: 1.0, color: Colors.red)),
+                                  child: const Text('Record Video',
+                                      style: const TextStyle(
+                                          fontSize: 18, color: Colors.red)),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const CameraPage()));
+                                  },
+                                )),
+                          ),
+                          Expanded(
+                            child: Container(
+                                padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                child: ElevatedButton(
+                                  child: const Text('Next Exercise',
+                                      style: const TextStyle(fontSize: 18)),
+                                  onPressed: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (context) => AlertDialog(
+                                        title: Text(
+                                            'Did you experience any pain during this exercise?',
+                                            style: TextStyle(fontSize: 16)),
+                                        content: StatefulBuilder(builder:
+                                            (BuildContext context,
                                                 StateSetter setState) {
-                                              return Column(
-                                                  mainAxisSize: MainAxisSize.min,
-                                                  children: [
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                          return Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("0    None"),
-                                                        leading: Radio<int>(
-                                                            value: 0,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 0;
-                                                              });
-                                                            }),
-                                                        trailing: Image.asset(
-                                                            "assets/images/happyFace.png")),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("0    None"),
+                                                    leading: Radio<int>(
+                                                        value: 0,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 0;
+                                                          });
+                                                        }),
+                                                    trailing: Image.asset(
+                                                        "assets/images/happyFace.png")),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("1"),
-                                                        leading: Radio<int>(
-                                                            value: 1,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 1;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("1"),
+                                                    leading: Radio<int>(
+                                                        value: 1,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 1;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("2"),
-                                                        leading: Radio<int>(
-                                                            value: 2,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 2;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("2"),
+                                                    leading: Radio<int>(
+                                                        value: 2,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 2;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("3"),
-                                                        leading: Radio<int>(
-                                                            value: 3,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 3;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("3"),
+                                                    leading: Radio<int>(
+                                                        value: 3,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 3;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("4"),
-                                                        leading: Radio<int>(
-                                                            value: 4,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 4;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("4"),
+                                                    leading: Radio<int>(
+                                                        value: 4,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 4;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("5"),
-                                                        leading: Radio<int>(
-                                                            value: 5,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 5;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("5"),
+                                                    leading: Radio<int>(
+                                                        value: 5,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 5;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("6"),
-                                                        leading: Radio<int>(
-                                                            value: 6,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 6;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("6"),
+                                                    leading: Radio<int>(
+                                                        value: 6,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 6;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("7"),
-                                                        leading: Radio<int>(
-                                                            value: 7,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 7;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("7"),
+                                                    leading: Radio<int>(
+                                                        value: 7,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 7;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("8"),
-                                                        leading: Radio<int>(
-                                                            value: 8,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 8;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("8"),
+                                                    leading: Radio<int>(
+                                                        value: 8,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 8;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("9"),
-                                                        leading: Radio<int>(
-                                                            value: 9,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 9;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("9"),
+                                                    leading: Radio<int>(
+                                                        value: 9,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 9;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("10  Very Severe"),
-                                                        leading: Radio<int>(
-                                                            value: 10,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 10;
-                                                              });
-                                                            }),
-                                                        trailing: Image.asset(
-                                                            "assets/images/sadFace.png")),
-                                                  ]);
-                                            }),
-                                            actions: <Widget>[
-                                              TextButton(
-                                                  child: Text('Submit',
-                                                      style: TextStyle(fontSize: 19)),
-                                                  onPressed: () => Navigator.push(
-                                                      context,
-                                                      new MaterialPageRoute(
-                                                          builder: (context) =>
+                                                    title:
+                                                        Text("10  Very Severe"),
+                                                    leading: Radio<int>(
+                                                        value: 10,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 10;
+                                                          });
+                                                        }),
+                                                    trailing: Image.asset(
+                                                        "assets/images/sadFace.png")),
+                                              ]);
+                                        }),
+                                        actions: <Widget>[
+                                          TextButton(
+                                              child: Text('Submit',
+                                                  style:
+                                                      TextStyle(fontSize: 19)),
+                                              onPressed: () => Navigator.push(
+                                                  context,
+                                                  new MaterialPageRoute(
+                                                      builder: (context) =>
                                                           new Exercise6()))),
-                                            ],
-                                          ),
-                                        );
-                                      },
-                                    )),
-                              ),
-
-                            ]
-                        ),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                )),
+                          ),
+                        ]),
                         Container(
-                          padding: EdgeInsets.only(bottom:5.0),
+                          padding: EdgeInsets.only(bottom: 5.0),
                         ),
                         Container(
                           padding: const EdgeInsets.all(16.0),
@@ -1592,7 +1666,7 @@ class _Exercise6State extends State<Exercise6> {
                 builder: (context) => ListView(
                       children: <Widget>[
                         Container(
-                          padding: EdgeInsets.only(bottom:10.0),
+                          padding: EdgeInsets.only(bottom: 10.0),
                         ),
                         Container(
                           child: const Text('Exercise 6: Diagonal Reach\n',
@@ -1614,213 +1688,228 @@ class _Exercise6State extends State<Exercise6> {
                                   color: Colors.black)),
                         ),
                         Container(
-                          padding: EdgeInsets.only(bottom:15.0),
+                          padding: EdgeInsets.only(bottom: 15.0),
                         ),
-                        Row(
-                            children: <Widget>[
-                              Expanded(
-                                child: Container(
-                                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                                    child: ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                          primary:Colors.white,
-                                          side: BorderSide(width: 1.0, color: Colors.red)),
-                                      child: const Text('Record Video', style: const TextStyle(fontSize: 18, color: Colors.red)),
-                                      onPressed: () {
-                                        Navigator.push(context, MaterialPageRoute(builder: (context) => const CameraPage()));
-                                      },
-                                    )
-                                ),
-                              ),
-                              Expanded(
-                                child:  Container(
-                                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-
-                                    child: ElevatedButton(
-                                      child: const Text('Next Exercise',
-                                          style: const TextStyle(fontSize: 18)),
-                                      onPressed: () {
-                                        showDialog(
-                                          context: context,
-                                          builder: (context) => AlertDialog(
-                                            title: Text(
-                                                'Did you experience any pain during this exercise?',
-                                                style: TextStyle(fontSize: 16)),
-                                            content: StatefulBuilder(builder:
-                                                (BuildContext context,
+                        Row(children: <Widget>[
+                          Expanded(
+                            child: Container(
+                                padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      primary: Colors.white,
+                                      side: BorderSide(
+                                          width: 1.0, color: Colors.red)),
+                                  child: const Text('Record Video',
+                                      style: const TextStyle(
+                                          fontSize: 18, color: Colors.red)),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const CameraPage()));
+                                  },
+                                )),
+                          ),
+                          Expanded(
+                            child: Container(
+                                padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                child: ElevatedButton(
+                                  child: const Text('Next Exercise',
+                                      style: const TextStyle(fontSize: 18)),
+                                  onPressed: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (context) => AlertDialog(
+                                        title: Text(
+                                            'Did you experience any pain during this exercise?',
+                                            style: TextStyle(fontSize: 16)),
+                                        content: StatefulBuilder(builder:
+                                            (BuildContext context,
                                                 StateSetter setState) {
-                                              return Column(
-                                                  mainAxisSize: MainAxisSize.min,
-                                                  children: [
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                          return Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("0    None"),
-                                                        leading: Radio<int>(
-                                                            value: 0,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 0;
-                                                              });
-                                                            }),
-                                                        trailing: Image.asset(
-                                                            "assets/images/happyFace.png")),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("0    None"),
+                                                    leading: Radio<int>(
+                                                        value: 0,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 0;
+                                                          });
+                                                        }),
+                                                    trailing: Image.asset(
+                                                        "assets/images/happyFace.png")),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("1"),
-                                                        leading: Radio<int>(
-                                                            value: 1,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 1;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("1"),
+                                                    leading: Radio<int>(
+                                                        value: 1,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 1;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("2"),
-                                                        leading: Radio<int>(
-                                                            value: 2,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 2;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("2"),
+                                                    leading: Radio<int>(
+                                                        value: 2,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 2;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("3"),
-                                                        leading: Radio<int>(
-                                                            value: 3,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 3;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("3"),
+                                                    leading: Radio<int>(
+                                                        value: 3,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 3;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("4"),
-                                                        leading: Radio<int>(
-                                                            value: 4,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 4;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("4"),
+                                                    leading: Radio<int>(
+                                                        value: 4,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 4;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("5"),
-                                                        leading: Radio<int>(
-                                                            value: 5,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 5;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("5"),
+                                                    leading: Radio<int>(
+                                                        value: 5,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 5;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("6"),
-                                                        leading: Radio<int>(
-                                                            value: 6,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 6;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("6"),
+                                                    leading: Radio<int>(
+                                                        value: 6,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 6;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("7"),
-                                                        leading: Radio<int>(
-                                                            value: 7,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 7;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("7"),
+                                                    leading: Radio<int>(
+                                                        value: 7,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 7;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("8"),
-                                                        leading: Radio<int>(
-                                                            value: 8,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 8;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("8"),
+                                                    leading: Radio<int>(
+                                                        value: 8,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 8;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("9"),
-                                                        leading: Radio<int>(
-                                                            value: 9,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 9;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("9"),
+                                                    leading: Radio<int>(
+                                                        value: 9,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 9;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("10  Very Severe"),
-                                                        leading: Radio<int>(
-                                                            value: 10,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 10;
-                                                              });
-                                                            }),
-                                                        trailing: Image.asset(
-                                                            "assets/images/sadFace.png")),
-                                                  ]);
-                                            }),
-                                            actions: <Widget>[
-                                              TextButton(
-                                                  child: Text('Submit',
-                                                      style: TextStyle(fontSize: 19)),
-                                                  onPressed: () => Navigator.push(
-                                                      context,
-                                                      new MaterialPageRoute(
-                                                          builder: (context) =>
+                                                    title:
+                                                        Text("10  Very Severe"),
+                                                    leading: Radio<int>(
+                                                        value: 10,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 10;
+                                                          });
+                                                        }),
+                                                    trailing: Image.asset(
+                                                        "assets/images/sadFace.png")),
+                                              ]);
+                                        }),
+                                        actions: <Widget>[
+                                          TextButton(
+                                              child: Text('Submit',
+                                                  style:
+                                                      TextStyle(fontSize: 19)),
+                                              onPressed: () => Navigator.push(
+                                                  context,
+                                                  new MaterialPageRoute(
+                                                      builder: (context) =>
                                                           new Exercise7()))),
-                                            ],
-                                          ),
-                                        );
-                                      },
-                                    )),
-                              ),
-
-                            ]
-                        ),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                )),
+                          ),
+                        ]),
                         Container(
-                          padding: EdgeInsets.only(bottom:5.0),
+                          padding: EdgeInsets.only(bottom: 5.0),
                         ),
                         Container(
                           padding: const EdgeInsets.all(16.0),
@@ -1863,7 +1952,7 @@ class _Exercise7State extends State<Exercise7> {
                 builder: (context) => ListView(
                       children: <Widget>[
                         Container(
-                          padding: EdgeInsets.only(bottom:10.0),
+                          padding: EdgeInsets.only(bottom: 10.0),
                         ),
                         Container(
                           child: const Text('Exercise 7: Calf Raises\n',
@@ -1885,213 +1974,228 @@ class _Exercise7State extends State<Exercise7> {
                                   color: Colors.black)),
                         ),
                         Container(
-                          padding: EdgeInsets.only(bottom:15.0),
+                          padding: EdgeInsets.only(bottom: 15.0),
                         ),
-                        Row(
-                            children: <Widget>[
-                              Expanded(
-                                child: Container(
-                                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                                    child: ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                          primary:Colors.white,
-                                          side: BorderSide(width: 1.0, color: Colors.red)),
-                                      child: const Text('Record Video', style: const TextStyle(fontSize: 18, color: Colors.red)),
-                                      onPressed: () {
-                                        Navigator.push(context, MaterialPageRoute(builder: (context) => const CameraPage()));
-                                      },
-                                    )
-                                ),
-                              ),
-                              Expanded(
-                                child:  Container(
-                                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-
-                                    child: ElevatedButton(
-                                      child: const Text('Next Exercise',
-                                          style: const TextStyle(fontSize: 18)),
-                                      onPressed: () {
-                                        showDialog(
-                                          context: context,
-                                          builder: (context) => AlertDialog(
-                                            title: Text(
-                                                'Did you experience any pain during this exercise?',
-                                                style: TextStyle(fontSize: 16)),
-                                            content: StatefulBuilder(builder:
-                                                (BuildContext context,
+                        Row(children: <Widget>[
+                          Expanded(
+                            child: Container(
+                                padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      primary: Colors.white,
+                                      side: BorderSide(
+                                          width: 1.0, color: Colors.red)),
+                                  child: const Text('Record Video',
+                                      style: const TextStyle(
+                                          fontSize: 18, color: Colors.red)),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const CameraPage()));
+                                  },
+                                )),
+                          ),
+                          Expanded(
+                            child: Container(
+                                padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                child: ElevatedButton(
+                                  child: const Text('Next Exercise',
+                                      style: const TextStyle(fontSize: 18)),
+                                  onPressed: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (context) => AlertDialog(
+                                        title: Text(
+                                            'Did you experience any pain during this exercise?',
+                                            style: TextStyle(fontSize: 16)),
+                                        content: StatefulBuilder(builder:
+                                            (BuildContext context,
                                                 StateSetter setState) {
-                                              return Column(
-                                                  mainAxisSize: MainAxisSize.min,
-                                                  children: [
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                          return Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("0    None"),
-                                                        leading: Radio<int>(
-                                                            value: 0,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 0;
-                                                              });
-                                                            }),
-                                                        trailing: Image.asset(
-                                                            "assets/images/happyFace.png")),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("0    None"),
+                                                    leading: Radio<int>(
+                                                        value: 0,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 0;
+                                                          });
+                                                        }),
+                                                    trailing: Image.asset(
+                                                        "assets/images/happyFace.png")),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("1"),
-                                                        leading: Radio<int>(
-                                                            value: 1,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 1;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("1"),
+                                                    leading: Radio<int>(
+                                                        value: 1,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 1;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("2"),
-                                                        leading: Radio<int>(
-                                                            value: 2,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 2;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("2"),
+                                                    leading: Radio<int>(
+                                                        value: 2,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 2;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("3"),
-                                                        leading: Radio<int>(
-                                                            value: 3,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 3;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("3"),
+                                                    leading: Radio<int>(
+                                                        value: 3,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 3;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("4"),
-                                                        leading: Radio<int>(
-                                                            value: 4,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 4;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("4"),
+                                                    leading: Radio<int>(
+                                                        value: 4,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 4;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("5"),
-                                                        leading: Radio<int>(
-                                                            value: 5,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 5;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("5"),
+                                                    leading: Radio<int>(
+                                                        value: 5,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 5;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("6"),
-                                                        leading: Radio<int>(
-                                                            value: 6,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 6;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("6"),
+                                                    leading: Radio<int>(
+                                                        value: 6,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 6;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("7"),
-                                                        leading: Radio<int>(
-                                                            value: 7,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 7;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("7"),
+                                                    leading: Radio<int>(
+                                                        value: 7,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 7;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("8"),
-                                                        leading: Radio<int>(
-                                                            value: 8,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 8;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("8"),
+                                                    leading: Radio<int>(
+                                                        value: 8,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 8;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("9"),
-                                                        leading: Radio<int>(
-                                                            value: 9,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 9;
-                                                              });
-                                                            })),
-                                                    ListTile(
-                                                        visualDensity: VisualDensity(
+                                                    title: Text("9"),
+                                                    leading: Radio<int>(
+                                                        value: 9,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 9;
+                                                          });
+                                                        })),
+                                                ListTile(
+                                                    visualDensity:
+                                                        VisualDensity(
                                                             horizontal: 0,
                                                             vertical: -4),
-                                                        title: Text("10  Very Severe"),
-                                                        leading: Radio<int>(
-                                                            value: 10,
-                                                            groupValue: val,
-                                                            onChanged: (_val) {
-                                                              setState(() {
-                                                                val = 10;
-                                                              });
-                                                            }),
-                                                        trailing: Image.asset(
-                                                            "assets/images/sadFace.png")),
-                                                  ]);
-                                            }),
-                                            actions: <Widget>[
-                                              TextButton(
-                                                  child: Text('Submit',
-                                                      style: TextStyle(fontSize: 19)),
-                                                  onPressed: () => Navigator.push(
-                                                      context,
-                                                      new MaterialPageRoute(
-                                                          builder: (context) =>
+                                                    title:
+                                                        Text("10  Very Severe"),
+                                                    leading: Radio<int>(
+                                                        value: 10,
+                                                        groupValue: val,
+                                                        onChanged: (_val) {
+                                                          setState(() {
+                                                            val = 10;
+                                                          });
+                                                        }),
+                                                    trailing: Image.asset(
+                                                        "assets/images/sadFace.png")),
+                                              ]);
+                                        }),
+                                        actions: <Widget>[
+                                          TextButton(
+                                              child: Text('Submit',
+                                                  style:
+                                                      TextStyle(fontSize: 19)),
+                                              onPressed: () => Navigator.push(
+                                                  context,
+                                                  new MaterialPageRoute(
+                                                      builder: (context) =>
                                                           new Finish()))),
-                                            ],
-                                          ),
-                                        );
-                                      },
-                                    )),
-                              ),
-
-                            ]
-                        ),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                )),
+                          ),
+                        ]),
                         Container(
-                          padding: EdgeInsets.only(bottom:5.0),
+                          padding: EdgeInsets.only(bottom: 5.0),
                         ),
                         Container(
                           padding: const EdgeInsets.all(16.0),
@@ -2110,6 +2214,21 @@ class Finish extends StatefulWidget {
 }
 
 class _FinishState extends State<Finish> {
+  late ConfettiController _controllerCenter;
+
+  @override
+  void initState() {
+    super.initState();
+    _controllerCenter =
+        ConfettiController(duration: const Duration(seconds: 3));
+  }
+
+  @override
+  void dispose() {
+    _controllerCenter.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -2141,10 +2260,66 @@ class _FinishState extends State<Finish> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 35,
-                                  fontFamily: 'Lato',
+                                  fontFamily: 'LatoBold',
                                   color: Colors.red)),
                         ),
+                        Align(
+                          alignment: Alignment.center,
+                          child: ConfettiWidget(
+                            confettiController: _controllerCenter,
+                            blastDirectionality: BlastDirectionality.explosive,
+                            particleDrag: 0.05,
+                            emissionFrequency: 0.25,
+                            numberOfParticles: 5,
+                            gravity: 0.15,
+                          ),
+                        ),
+                        Container(
+                            padding: EdgeInsets.fromLTRB(100, 25, 100, 15),
+                            child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    primary: Colors.white,
+                                    side: BorderSide(
+                                        width: 1.0, color: Colors.red)),
+                                child: const Text('Claim Reward!',
+                                    style: TextStyle(
+                                        color: Colors.red,
+                                        fontSize: 20,
+                                        fontFamily: 'Lato')),
+                                onPressed: () {
+                                  _controllerCenter.play();
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) => AlertDialog(
+                                        contentPadding:
+                                            EdgeInsets.fromLTRB(0, 50, 0, 0),
+                                        content: StatefulBuilder(builder:
+                                            (BuildContext context,
+                                                StateSetter setState) {
+                                          return Container(
+                                              height:150,
+                                              width: 150,
+                                              child: Image.asset(
+                                                "assets/images/trophy1.png",
+                                                alignment: Alignment.center,
+                                              ),
 
+                                          );
+                                        }),
+                                        actions: <Widget>[
+                                          TextButton(
+                                            child: Text('OK',
+                                                style: TextStyle(fontSize: 19)),
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                          )
+                                        ]),
+                                  );
+                                })),
+                        Container(
+                          padding: EdgeInsets.only(bottom: 290),
+                        ),
                         FractionallySizedBox(
                             widthFactor: 0.5,
                             child: ElevatedButton(
