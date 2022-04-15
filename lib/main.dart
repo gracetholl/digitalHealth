@@ -195,7 +195,7 @@ class HomePage extends StatelessWidget {
                       },
                     )),
                 Container(
-                  padding: EdgeInsets.fromLTRB(10, 5, 0, 10),
+                  padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
                   child: const Text(
                       '\n*Program adapted from Lee 2020 - Postoperative Rehabilitation after Hip Fracture and Latham 2014 - Effect of a home-based exercise program on functional recovery following rehabilitation after hip fracture\n',
                       textAlign: TextAlign.center,
@@ -2275,7 +2275,7 @@ class _FinishState extends State<Finish> {
                           ),
                         ),
                         Container(
-                            padding: EdgeInsets.fromLTRB(100, 25, 100, 15),
+                            padding: EdgeInsets.fromLTRB(100, 40, 100, 15),
                             child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                     primary: Colors.white,
@@ -2288,11 +2288,12 @@ class _FinishState extends State<Finish> {
                                         fontFamily: 'Lato')),
                                 onPressed: () {
                                   _controllerCenter.play();
-                                  showDialog(
+                                    showDialog(
                                     context: context,
                                     builder: (context) => AlertDialog(
                                         contentPadding:
                                             EdgeInsets.fromLTRB(0, 50, 0, 0),
+                                        title: Text('Total Trophies: 2'),
                                         content: StatefulBuilder(builder:
                                             (BuildContext context,
                                                 StateSetter setState) {
@@ -2316,9 +2317,18 @@ class _FinishState extends State<Finish> {
                                           )
                                         ]),
                                   );
-                                })),
+                                })
+                        ),
                         Container(
-                          padding: EdgeInsets.only(bottom: 290),
+                          padding: EdgeInsets.fromLTRB(10, 70, 10, 10),
+                          alignment: Alignment.center,
+                          child: Text('Reminder: Repeat exercises 3 times a week.\nKeep up the good work!',
+                              style: TextStyle(fontFamily: 'LatoBold', fontSize: 19),
+                              textAlign: TextAlign.center,
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.only(bottom: 150),
                         ),
                         FractionallySizedBox(
                             widthFactor: 0.5,
