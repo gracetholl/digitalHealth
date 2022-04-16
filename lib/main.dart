@@ -1,6 +1,3 @@
-// Copyright 2018 The Flutter team. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
 
 import 'dart:ui';
 import 'package:firebase_core/firebase_core.dart';
@@ -8,11 +5,21 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../camera_page.dart';
 import 'package:confetti/confetti.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   runApp(const MyApp());
+}
+// log notifications from Firebase server
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  print(" --- new background message ---");
+  print(message.notification!.title);
+  print(message.notification!.body);
 }
 
 class MyApp extends StatelessWidget {
@@ -44,7 +51,7 @@ class MyStatefulWidget extends StatefulWidget {
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
+// Registration Screen Information
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -86,9 +93,19 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   onPressed: () {
                     print(nameController.text);
                     print(passwordController.text);
+                    // create new user in Firestore
                     FirebaseAuth.instance.createUserWithEmailAndPassword(
                         email: nameController.text,
                         password: passwordController.text);
+                    CollectionReference users = FirebaseFirestore.instance.collection('users');
+                    Future<void> addUser() {
+                      // add the new user's data to the Firestore cloud
+                      return users
+                          .add({
+                        'email': nameController.text
+                      });
+                    }
+                    addUser();
                     Navigator.push(
                         context,
                         new MaterialPageRoute(
@@ -103,6 +120,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   onPressed: () {
                     print(nameController.text);
                     print(passwordController.text);
+                    // registered users log in through Firebase Auth
                     FirebaseAuth.instance.signInWithEmailAndPassword(
                         email: nameController.text,
                         password: passwordController.text);
@@ -115,7 +133,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             Container(
                 padding: EdgeInsets.fromLTRB(110, 0, 100, 0),
                 child: TextButton(
-                  onPressed: () {
+                  onPressed: () { // sends a reset email if user cannot remember their password
                     FirebaseAuth.instance
                         .sendPasswordResetEmail(email: nameController.text);
                     //forgot password screen
@@ -128,7 +146,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatelessWidget { // Welcome screen with basic exercise information
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -187,14 +205,14 @@ class HomePage extends StatelessWidget {
                     child: ElevatedButton(
                       child: const Text('Get Started',
                           style: const TextStyle(fontSize: 20)),
-                      onPressed: () {
+                      onPressed: () { // navigate to the beginning exercise
                         Navigator.push(
                             context,
                             new MaterialPageRoute(
                                 builder: (context) => new Exercise1()));
                       },
                     )),
-                Container(
+                Container( // citation
                   padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
                   child: const Text(
                       '\n*Program adapted from Lee 2020 - Postoperative Rehabilitation after Hip Fracture and Latham 2014 - Effect of a home-based exercise program on functional recovery following rehabilitation after hip fracture\n',
@@ -220,6 +238,7 @@ class Exercise1 extends StatefulWidget {
 class _Exercise1State extends State<Exercise1> {
   int val = -1;
   bool select = false;
+  bool pain = true;
 
   @override
   Widget build(BuildContext context) {
@@ -245,7 +264,7 @@ class _Exercise1State extends State<Exercise1> {
                         Container(
                           padding: EdgeInsets.only(bottom: 10.0),
                         ),
-                        Container(
+                        Container( // Exercise Label
                           child: const Text('Exercise 1: Hip Extensions\n',
                               textAlign: TextAlign.center,
                               style: TextStyle(
@@ -253,10 +272,10 @@ class _Exercise1State extends State<Exercise1> {
                                   fontFamily: 'Lato',
                                   color: Colors.red)),
                         ),
-                        Image.asset("assets/images/hipextension.gif",
+                        Image.asset("assets/images/hipextension.gif", // show gif demo of exercise
                             width: 150, height: 330),
                         Container(
-                          child: const Text(
+                          child: const Text( // Direct user with how to proceed: any equipment needed, duration of exercise, etc
                               'Sets: 2    Reps: 12    Rest: 30s\nResistance: Use TheraBand\nTempo: 2s going out 2s coming back',
                               textAlign: TextAlign.center,
                               style: TextStyle(
@@ -283,7 +302,7 @@ class _Exercise1State extends State<Exercise1> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) =>
+                                            builder: (context) => // Eventually integrate pose estimation here
                                                 const CameraPage()));
                                   },
                                 )),
@@ -299,7 +318,7 @@ class _Exercise1State extends State<Exercise1> {
                                       context: context,
                                       builder: (context) => AlertDialog(
                                         title: Text(
-                                            'Did you experience any pain during this exercise?',
+                                            'Did you experience any pain during this exercise?', // get feedback
                                             style: TextStyle(fontSize: 16)),
                                         content: StatefulBuilder(builder:
                                             (BuildContext context,
@@ -319,6 +338,7 @@ class _Exercise1State extends State<Exercise1> {
                                                         onChanged: (_val) {
                                                           setState(() {
                                                             val = 0;
+                                                            pain = false; // do not send pain notification
                                                           });
                                                         }),
                                                     trailing: Image.asset(
@@ -471,17 +491,38 @@ class _Exercise1State extends State<Exercise1> {
                                         actions: <Widget>[
                                           TextButton(
                                               child: Text('Submit',
-                                                  style:
-                                                      TextStyle(fontSize: 19)),
-                                              onPressed: () => Navigator.push(
+                                              style: TextStyle(fontSize: 19)),
+                                              onPressed: () {
+                                                if(pain) {
+                                                showDialog(context: context,
+                                                barrierDismissible: false,
+                                                builder: (context) => AlertDialog(
+                                                    title: const Text("Reminder"),
+                                                    content: Text('You should not be in pain while doing these exercises. Please contact your physical therapist for alternative options.\n'),
+                                                    actions: <Widget> [
+                                                      TextButton(
+                                                          child: const Text('OK'),
+                                                          onPressed: () {
+                                                            Navigator.push(
+                                                                context,
+                                                                new MaterialPageRoute(
+                                                                    builder: (context) =>
+                                                                    new Exercise2()));
+                                                          }
+                                                      )
+
+                                                    ]));}
+                                                else {
+                                                  Navigator.push(
                                                   context,
                                                   new MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          new Exercise2()))),
+                                                    builder: (context) =>
+                                                    new Exercise2()));
+                                          }}),
                                         ],
-                                      ),
-                                    );
-                                  },
+                                         ),
+                                      );
+                                    }
                                 )),
                           ),
                         ]),
@@ -503,6 +544,7 @@ class Exercise2 extends StatefulWidget {
 
 class _Exercise2State extends State<Exercise2> {
   int val = -1;
+  bool pain = true;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -601,6 +643,7 @@ class _Exercise2State extends State<Exercise2> {
                                                         onChanged: (_val) {
                                                           setState(() {
                                                             val = 0;
+                                                            pain = false;
                                                           });
                                                         }),
                                                     trailing: Image.asset(
@@ -755,11 +798,36 @@ class _Exercise2State extends State<Exercise2> {
                                               child: Text('Submit',
                                                   style:
                                                       TextStyle(fontSize: 19)),
-                                              onPressed: () => Navigator.push(
-                                                  context,
-                                                  new MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          new Exercise3()))),
+                                              onPressed:
+                                                  () {
+                                                if(pain) {
+                                                  showDialog(context: context,
+                                                      barrierDismissible: false,
+                                                      builder: (context) => AlertDialog(
+                                                          title: const Text("Reminder"),
+                                                          content: Text('You should not be in pain while doing these exercises. Please contact your physical therapist for alternative options.\n'),
+                                                          actions: <Widget> [
+                                                            TextButton(
+                                                                child: const Text('OK'),
+                                                                onPressed: () {
+                                                                  Navigator.push(
+                                                                      context,
+                                                                      new MaterialPageRoute(
+                                                                          builder: (context) =>
+                                                                          new Exercise3()));
+                                                                }
+                                                            )
+
+                                                          ]));}
+                                                else {
+                                                  Navigator.push(
+                                                      context,
+                                                      new MaterialPageRoute(
+
+                                                          builder: (context) =>
+                                                          new Exercise3()));
+                                                } }
+                                          )
                                         ],
                                       ),
                                     );
@@ -788,6 +856,7 @@ class Exercise3 extends StatefulWidget {
 
 class _Exercise3State extends State<Exercise3> {
   int val = -1;
+  bool pain = true;
 
   @override
   Widget build(BuildContext context) {
@@ -887,6 +956,7 @@ class _Exercise3State extends State<Exercise3> {
                                                         onChanged: (_val) {
                                                           setState(() {
                                                             val = 0;
+                                                            pain = false;
                                                           });
                                                         }),
                                                     trailing: Image.asset(
@@ -1041,11 +1111,35 @@ class _Exercise3State extends State<Exercise3> {
                                               child: Text('Submit',
                                                   style:
                                                       TextStyle(fontSize: 19)),
-                                              onPressed: () => Navigator.push(
-                                                  context,
-                                                  new MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          new Exercise4()))),
+                                              onPressed: () {
+                                                if(pain) {
+                                                  showDialog(context: context,
+                                                      barrierDismissible: false,
+                                                      builder: (context) => AlertDialog(
+                                                          title: const Text("Reminder"),
+                                                          content: Text('You should not be in pain while doing these exercises. Please contact your physical therapist for alternative options.\n'),
+                                                          actions: <Widget> [
+                                                            TextButton(
+                                                                child: const Text('OK'),
+                                                                onPressed: () {
+                                                                  Navigator.push(
+                                                                      context,
+                                                                      new MaterialPageRoute(
+                                                                          builder: (context) =>
+                                                                          new Exercise4()));
+                                                                }
+                                                            )
+
+                                                          ]));}
+                                                else {
+                                                  Navigator.push(
+                                                      context,
+                                                      new MaterialPageRoute(
+
+                                                          builder: (context) =>
+                                                          new Exercise4()));
+                                                } }
+                                          )
                                         ],
                                       ),
                                     );
@@ -1074,6 +1168,7 @@ class Exercise4 extends StatefulWidget {
 
 class _Exercise4State extends State<Exercise4> {
   int val = -1;
+  bool pain = true;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -1172,6 +1267,7 @@ class _Exercise4State extends State<Exercise4> {
                                                         onChanged: (_val) {
                                                           setState(() {
                                                             val = 0;
+                                                            pain = false;
                                                           });
                                                         }),
                                                     trailing: Image.asset(
@@ -1326,11 +1422,35 @@ class _Exercise4State extends State<Exercise4> {
                                               child: Text('Submit',
                                                   style:
                                                       TextStyle(fontSize: 19)),
-                                              onPressed: () => Navigator.push(
-                                                  context,
-                                                  new MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          new Exercise5()))),
+                                              onPressed: () {
+                                                if(pain) {
+                                                  showDialog(context: context,
+                                                      barrierDismissible: false,
+                                                      builder: (context) => AlertDialog(
+                                                          title: const Text("Reminder"),
+                                                          content: Text('You should not be in pain while doing these exercises. Please contact your physical therapist for alternative options.\n'),
+                                                          actions: <Widget> [
+                                                            TextButton(
+                                                                child: const Text('OK'),
+                                                                onPressed: () {
+                                                                  Navigator.push(
+                                                                      context,
+                                                                      new MaterialPageRoute(
+                                                                          builder: (context) =>
+                                                                          new Exercise5()));
+                                                                }
+                                                            )
+
+                                                          ]));}
+                                                else {
+                                                  Navigator.push(
+                                                      context,
+                                                      new MaterialPageRoute(
+
+                                                          builder: (context) =>
+                                                          new Exercise5()));
+                                                } }
+                                          )
                                         ],
                                       ),
                                     );
@@ -1359,6 +1479,7 @@ class Exercise5 extends StatefulWidget {
 
 class _Exercise5State extends State<Exercise5> {
   int val = -1;
+  bool pain = true;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -1457,6 +1578,7 @@ class _Exercise5State extends State<Exercise5> {
                                                         onChanged: (_val) {
                                                           setState(() {
                                                             val = 0;
+                                                            pain = false;
                                                           });
                                                         }),
                                                     trailing: Image.asset(
@@ -1611,11 +1733,35 @@ class _Exercise5State extends State<Exercise5> {
                                               child: Text('Submit',
                                                   style:
                                                       TextStyle(fontSize: 19)),
-                                              onPressed: () => Navigator.push(
-                                                  context,
-                                                  new MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          new Exercise6()))),
+                                              onPressed: () {
+                                                if(pain) {
+                                                  showDialog(context: context,
+                                                      barrierDismissible: false,
+                                                      builder: (context) => AlertDialog(
+                                                          title: const Text("Reminder"),
+                                                          content: Text('You should not be in pain while doing these exercises. Please contact your physical therapist for alternative options.\n'),
+                                                          actions: <Widget> [
+                                                            TextButton(
+                                                                child: const Text('OK'),
+                                                                onPressed: () {
+                                                                  Navigator.push(
+                                                                      context,
+                                                                      new MaterialPageRoute(
+                                                                          builder: (context) =>
+                                                                          new Exercise6()));
+                                                                }
+                                                            )
+
+                                                          ]));}
+                                                else {
+                                                  Navigator.push(
+                                                      context,
+                                                      new MaterialPageRoute(
+
+                                                          builder: (context) =>
+                                                          new Exercise6()));
+                                                } }
+                                          ),
                                         ],
                                       ),
                                     );
@@ -1644,6 +1790,7 @@ class Exercise6 extends StatefulWidget {
 
 class _Exercise6State extends State<Exercise6> {
   int val = -1;
+  bool pain = true;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -1742,6 +1889,7 @@ class _Exercise6State extends State<Exercise6> {
                                                         onChanged: (_val) {
                                                           setState(() {
                                                             val = 0;
+                                                            pain = false;
                                                           });
                                                         }),
                                                     trailing: Image.asset(
@@ -1896,11 +2044,34 @@ class _Exercise6State extends State<Exercise6> {
                                               child: Text('Submit',
                                                   style:
                                                       TextStyle(fontSize: 19)),
-                                              onPressed: () => Navigator.push(
-                                                  context,
-                                                  new MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          new Exercise7()))),
+                                              onPressed: () {
+                                                if(pain) {
+                                                  showDialog(context: context,
+                                                      barrierDismissible: false,
+                                                      builder: (context) => AlertDialog(
+                                                          title: const Text("Reminder"),
+                                                          content: Text('You should not be in pain while doing these exercises. Please contact your physical therapist for alternative options.\n'),
+                                                          actions: <Widget> [
+                                                            TextButton(
+                                                                child: const Text('OK'),
+                                                                onPressed: () {
+                                                                  Navigator.push(
+                                                                      context,
+                                                                      new MaterialPageRoute(
+                                                                          builder: (context) =>
+                                                                          new Exercise7()));
+                                                                }
+                                                            )
+
+                                                          ]));}
+                                                else {
+                                                  Navigator.push(
+                                                      context,
+                                                      new MaterialPageRoute(
+                                                          builder: (context) =>
+                                                          new Exercise7()));
+                                                } }
+                                          ),
                                         ],
                                       ),
                                     );
@@ -1929,6 +2100,7 @@ class Exercise7 extends StatefulWidget {
 
 class _Exercise7State extends State<Exercise7> {
   int val = -1;
+  bool pain = true;
 
   @override
   Widget build(BuildContext context) {
@@ -2028,6 +2200,7 @@ class _Exercise7State extends State<Exercise7> {
                                                         onChanged: (_val) {
                                                           setState(() {
                                                             val = 0;
+                                                            pain = false;
                                                           });
                                                         }),
                                                     trailing: Image.asset(
@@ -2182,11 +2355,34 @@ class _Exercise7State extends State<Exercise7> {
                                               child: Text('Submit',
                                                   style:
                                                       TextStyle(fontSize: 19)),
-                                              onPressed: () => Navigator.push(
-                                                  context,
-                                                  new MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          new Finish()))),
+                                              onPressed: () {
+                                                if(pain) {
+                                                  showDialog(context: context,
+                                                      barrierDismissible: false,
+                                                      builder: (context) => AlertDialog(
+                                                          title: const Text("Reminder"),
+                                                          content: Text('You should not be in pain while doing these exercises. Please contact your physical therapist for alternative options.\n'),
+                                                          actions: <Widget> [
+                                                            TextButton(
+                                                                child: const Text('OK'),
+                                                                onPressed: () {
+                                                                  Navigator.push(
+                                                                      context,
+                                                                      new MaterialPageRoute(
+                                                                          builder: (context) =>
+                                                                          new Finish()));
+                                                                }
+                                                            )
+
+                                                          ]));}
+                                                else {
+                                                  Navigator.push(
+                                                      context,
+                                                      new MaterialPageRoute(
+                                                          builder: (context) =>
+                                                          new Finish()));
+                                                } }
+                                          ),
                                         ],
                                       ),
                                     );
@@ -2217,7 +2413,7 @@ class _FinishState extends State<Finish> {
   late ConfettiController _controllerCenter;
 
   @override
-  void initState() {
+  void initState() { // Confetti as a persuasive method / reward
     super.initState();
     _controllerCenter =
         ConfettiController(duration: const Duration(seconds: 3));
@@ -2281,7 +2477,7 @@ class _FinishState extends State<Finish> {
                                     primary: Colors.white,
                                     side: BorderSide(
                                         width: 1.0, color: Colors.red)),
-                                child: const Text('Claim Reward!',
+                                child: const Text('Claim Reward!', // Trophy offered as additional motivation
                                     style: TextStyle(
                                         color: Colors.red,
                                         fontSize: 20,
@@ -2293,7 +2489,7 @@ class _FinishState extends State<Finish> {
                                     builder: (context) => AlertDialog(
                                         contentPadding:
                                             EdgeInsets.fromLTRB(0, 50, 0, 0),
-                                        title: Text('Total Trophies: 2'),
+                                        title: Text('Total Trophies: 1'),
                                         content: StatefulBuilder(builder:
                                             (BuildContext context,
                                                 StateSetter setState) {
@@ -2319,7 +2515,7 @@ class _FinishState extends State<Finish> {
                                   );
                                 })
                         ),
-                        Container(
+                        Container( // reminder integrated into the app to help follow action behavior model
                           padding: EdgeInsets.fromLTRB(10, 70, 10, 10),
                           alignment: Alignment.center,
                           child: Text('Reminder: Repeat exercises 3 times a week.\nKeep up the good work!',
